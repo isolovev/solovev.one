@@ -32,7 +32,7 @@
 	    const request = new XMLHttpRequest();
 	    request.open("get", "https://folio.solovev.one/info/main", true);
 
-	    request.onreadystatechange = (event) => {
+	    request.onreadystatechange = () => {
 	      if (request.readyState !== XMLHttpRequest.DONE || request.status !== 200) {
 	        return;
 	      }
