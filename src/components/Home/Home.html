@@ -72,6 +72,12 @@
         this.set({
           hide: false,
         });
+
+        requestAnimationFrame(() => {
+          this.set({
+            animate: true,
+          });
+        });
       }
     },
 
