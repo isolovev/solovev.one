@@ -7,17 +7,21 @@
           {[styles.wrapAnimation]: animate},
         )}
       >
-        <h1 class={styles.pageTitle}>{info.title} – {info.specialty}</h1>
+        {#if info.title}
+          <h1 class={styles.pageTitle}>{info.title} – {info.specialty}</h1>
 
-        <div class={styles.heading}>
-          <a href={routeNames.home} class={styles.back}>
-            <IconBack/>
-          </a>
+          <div class={styles.heading}>
+            <a href={routeNames.home} class={styles.back}>
+              <IconBack/>
+            </a>
 
-          <h2 class={styles.title}>{page.title}</h2>
-        </div>
+            <h2 class={styles.title}>{page.title}</h2>
+          </div>
 
-        <div class={styles.text}>{page.text}</div>
+          <div class={styles.text}>{page.text}</div>
+        {:else}
+          <IconLoading/>
+        {/if}
       </div>
     </div>
   </main>
@@ -25,11 +29,10 @@
 
 
 <script>
-  import cx from 'classnames'
+  import cx from "classnames"
 
-  import styles from './About.module.scss'
-  import IconBack from '../IconBack/IconBack.html'
-  import routeNames from '../../utils/routeNames'
+  import styles from "./About.module.scss"
+  import routeNames from "../../utils/routeNames"
 
   export default {
     helpers: {
@@ -39,7 +42,8 @@
     },
 
     components: {
-      IconBack,
+      IconBack: "../IconBack/IconBack.html",
+      IconLoading: "../IconLoading/IconLoading.html",
     },
 
     oncreate() {
