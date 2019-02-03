@@ -7,6 +7,12 @@
   data={info}
 />
 
+<About
+  show={child.props.path === routeNames.about}
+  info={info}
+  page={about}
+/>
+
 <script>
   import "../styles/global.scss"
   import routeNames from "../utils/routeNames"
@@ -19,6 +25,7 @@
 		components: {
 			Main: "../components/Main/Main.html",
 			Home: "../components/Home/Home.html",
+			About: "../components/About/About.html",
 		},
 
 		oncreate() {
