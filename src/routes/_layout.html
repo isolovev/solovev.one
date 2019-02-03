@@ -1,6 +1,6 @@
 <svelte:component this={child.component} {...child.props} siteTitle="Иван Соловьев – Frontend разработчик"/>
 
-<Main projectsActive={child.segment === 'projects'}/>
+<Main projectsActive={child.segment === "projects"}/>
 
 <Home
   show={child.props.path === routeNames.home}
@@ -8,8 +8,8 @@
 />
 
 <script>
-  import '../styles/global.scss'
-  import routeNames from '../utils/routeNames'
+  import "../styles/global.scss"
+  import routeNames from "../utils/routeNames"
 
 	export default {
 	  helpers: {
@@ -17,8 +17,30 @@
 	  },
 
 		components: {
-			Main: '../components/Main/Main.html',
-			Home: '../components/Home/Home.html',
+			Main: "../components/Main/Main.html",
+			Home: "../components/Home/Home.html",
+		},
+
+		oncreate() {
+	    const request = new XMLHttpRequest();
+	    request.open("get", "https://folio.solovev.one/info/main", true);
+
+	    request.onreadystatechange = (event) => {
+	      if (request.readyState !== XMLHttpRequest.DONE || request.status !== 200) {
+	        return;
+	      }
+
+	      if (request.responseText) {
+	        const {info, about, projects} = JSON.parse(request.responseText);
+          this.set({
+            info,
+            about,
+            projects,
+          });
+	      }
+	    };
+
+	    request.send();
 		},
 
 		data: () => ({
