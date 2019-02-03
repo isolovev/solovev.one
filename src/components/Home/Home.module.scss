@@ -1,0 +1,217 @@
+@import '../../styles/var';
+
+.root {
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	box-sizing: border-box;
+
+	visibility: hidden;
+	opacity: 0;
+	transition: $transition;
+}
+
+		.rootShow {
+			opacity: 1;
+			visibility: visible;
+		}
+
+	.container {
+		position: relative;
+		z-index: 1;
+		height: 100%;
+		margin: 0 auto;
+		max-width: 75%;
+		box-sizing: border-box;
+
+		display: flex;
+		align-items: center;
+	}
+
+		.wrap {
+			flex: 0 0 auto;
+			text-shadow: 0 2px 4px rgba(#ddd, .4);
+			box-sizing: border-box;
+		}
+
+				.wrapAnimation {
+					animation: wrapAnimation 1.3s both 0.1s;
+				}
+
+			.title {
+				font-size: 3.5rem;
+				font-weight: 400;
+				text-shadow: 1px 0 2px rgba($text, .1);
+			}
+
+			.subtitle {
+				font-size: 2.6rem;
+				text-shadow: 1px 0 2px rgba($text, .1);
+			}
+
+
+			.nav {
+				margin: 1rem 0;
+			}
+
+				.navList {
+					display: flex;
+					justify-content: space-between;
+					margin: 0;
+					padding: 0;
+					list-style: none;
+				}
+
+					.navItem {
+						margin: 0;
+						padding: 0;
+						display: block;
+						transform: translateZ(0);
+
+						&:not(:first-child) {
+							margin-left: 2rem;
+						}
+					}
+
+						.navLink {
+							@include link();
+							font-size: 1.6rem;
+							text-transform: lowercase;
+							font-weight: 300;
+							padding: .35em 5px .5em;
+							position: relative;
+							line-height: 1;
+							display: block;
+
+							&::before,
+							&::after {
+								content: '';
+								display: block;
+								position: absolute;
+								height: 2px;
+								background: $text;
+								left: 0;
+								bottom: .2em;
+								width: 50%;
+								transform-origin: 100% 50%;
+								transition: $transition;
+							}
+
+							&::before {
+								left: 50%;
+								transform-origin: 0 50%;
+							}
+
+
+							&:hover,
+							&:focus {
+								&::before,
+								&::after {
+									transform: scale(0);
+								}
+							}
+
+							&:focus {
+								outline: 7px auto $brand;
+							}
+						}
+
+@media (max-width: 1060px) {
+	.wrap {
+		position: relative;
+		z-index: 2;
+
+		&::after {
+			content: '';
+			display: block;
+			position: absolute;
+			top: -$offsetWrap;
+			bottom: -$offsetWrap;
+			left: -160px;
+			right: -#{$offsetWrap * 2};
+			background: rgba(#fff, .4);
+			z-index: -1;
+			backdrop-filter: blur(4px);
+		}
+	}
+
+	.title {
+		font-size: 3rem;
+	}
+
+	.subtitle {
+		font-size: 2.25rem;
+	}
+}
+
+@media (max-width: 700px) {
+	.container {
+		align-items: flex-end;
+		max-width: none;
+	}
+
+	.wrap {
+		background: rgba(#fff, .4);
+		padding: 1rem $offsetWrap;
+		width: 100%;
+		text-align: center;
+
+		&::after {
+			display: none;
+		}
+	}
+
+	.title {
+		font-size: 2.5rem;
+	}
+
+	.subtitle {
+		font-size: 1.85rem;
+	}
+
+	.navList {
+		flex-wrap: wrap;
+		justify-content: space-around;
+		margin: -#{$offsetWrap} 0 0;
+	}
+
+	.navItem {
+		flex: 0 0 50%;
+		min-width: 250px;
+		padding: $offsetWrap 0 0;
+
+		&:not(:first-child) {
+			margin: 0;
+		}
+	}
+
+	.navLink {
+		display: inline;
+	}
+}
+
+@media (max-width: 400px) {
+	.title {
+		font-size: 2rem;
+	}
+
+	.subtitle {
+		font-size: 1.5rem;
+	}
+}
+
+@keyframes wrapAnimation {
+	0% {
+		opacity: 0;
+		transform: translateX(10px);
+	}
+
+	100% {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}

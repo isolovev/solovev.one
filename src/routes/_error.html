@@ -1,0 +1,54 @@
+<svelte:head>
+  <title>{status}</title>
+</svelte:head>
+
+<div class="error">
+  <h1>{status}</h1>
+
+    <p>{#if status === 404}Нет такой страницы :({:else}{error.message}{/if}</p>
+    <p>
+      <a href="/">На главную</a>
+    </p>
+
+    {#if dev && error.stack}
+      <pre>{error.stack}</pre>
+    {/if}
+</div>
+
+<style>
+  .error {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 300px;
+    max-width: 100%;
+    z-index: 2;
+    background: #fff;
+    padding: 25px 50px;
+    box-sizing: border-box;
+    text-align: center;
+  }
+
+	h1, p {
+		margin: 0;
+	}
+
+	h1 {
+		font-size: 2.8em;
+		font-weight: 700;
+		margin: 0 0 0.25em;
+	}
+
+	a {
+	  color:#222;
+	}
+</style>
+
+<script>
+	export default {
+		helpers: {
+			dev: process.env.NODE_ENV === 'development'
+		}
+	};
+</script>

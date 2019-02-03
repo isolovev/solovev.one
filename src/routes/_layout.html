@@ -1,0 +1,37 @@
+<svelte:component this={child.component} {...child.props} siteTitle="Иван Соловьев – Frontend разработчик"/>
+
+<Main projectsActive={child.segment === 'projects'}/>
+
+<Home
+  show={child.props.path === routeNames.home}
+  data={info}
+/>
+
+<script>
+  import '../styles/global.scss'
+  import routeNames from '../utils/routeNames'
+
+	export default {
+	  helpers: {
+	    routeNames,
+	  },
+
+		components: {
+			Main: '../components/Main/Main.html',
+			Home: '../components/Home/Home.html',
+		},
+
+		data: () => ({
+      info: {
+        main: "Привет, я – Ваня",
+        specialty: "Frontend разработчик",
+        title: "",
+      },
+      about: {
+        title: "",
+        text: "",
+      },
+      projects: [],
+    }),
+	};
+</script>
