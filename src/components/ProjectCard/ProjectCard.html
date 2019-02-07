@@ -1,0 +1,44 @@
+<article class={styles.root}>
+  <div class={styles.info}>
+    <h3 class={styles.title}>{title}</h3>
+    <div class={styles.text}>{text}</div>
+
+    {#if url}
+      <div class={styles.project}>
+        <a target="_blank" href={url} rel="noreferrer noopener">Ссылка на проект</a>
+      </div>
+    {/if}
+  </div>
+
+  <div
+    class={cx(
+      styles.screens,
+      {[styles.screensOffset]: mobile && desktop},
+    )}
+  >
+    <ProjectImageDesktop desktop={desktop} desktop_webp={desktop_webp} />
+    <ProjectImageMobile mobile={mobile} mobile_webp={mobile_webp} only={!desktop} />
+  </div>
+</article>
+
+<style>
+
+</style>
+
+<script>
+  import cx from "classnames";
+  import styles from "./ProjectCard.module.scss";
+
+  export default {
+    helpers: {
+      cx,
+      styles,
+    },
+
+    components: {
+      ProjectImageDesktop: "../ProjectImageDesktop/ProjectImageDesktop.html",
+      ProjectImageMobile: "../ProjectImageMobile/ProjectImageMobile.html",
+    },
+  };
+</script>
+

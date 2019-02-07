@@ -13,9 +13,16 @@
   page={about}
 />
 
+<Projects
+  show={child.props.path === routeNames.projects}
+  info={info}
+/>
+
 <script>
   import "../styles/global.scss"
+
   import routeNames from "../utils/routeNames"
+  import {apiUrl} from "../utils/settings";
 
 	export default {
 	  helpers: {
@@ -26,11 +33,12 @@
 			Main: "../components/Main/Main.html",
 			Home: "../components/Home/Home.html",
 			About: "../components/About/About.html",
+			Projects: "../components/Projects/Projects.html",
 		},
 
 		oncreate() {
 	    const request = new XMLHttpRequest();
-	    request.open("get", "https://folio.solovev.one/info/main", true);
+	    request.open("get", `${apiUrl}/info/main`, true);
 
 	    request.onreadystatechange = () => {
 	      if (request.readyState !== XMLHttpRequest.DONE || request.status !== 200) {
@@ -38,11 +46,10 @@
 	      }
 
 	      if (request.responseText) {
-	        const {info, about, projects} = JSON.parse(request.responseText);
+	        const {info, about} = JSON.parse(request.responseText);
           this.set({
             info,
             about,
-            projects,
           });
 	      }
 	    };
@@ -60,7 +67,6 @@
         title: "",
         text: "",
       },
-      projects: [],
     }),
 	};
 </script>

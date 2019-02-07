@@ -1,0 +1,55 @@
+{#if mobile}
+  <div
+    class={cx(
+      styles.root,
+      {[styles.rootOnly]: only},
+    )}
+  >
+    <div class={styles.wrap}>
+      <picture>
+        {#if mobile_webp}
+          <source srcset={mobile_webp} type="image/webp"/>
+        {/if}
+
+        <img
+          class={styles.image}
+          alt=""
+          src={mobile}
+          on:load="onLoad()"
+        />
+      </picture>
+
+      {#if !loaded}
+        <IconLoading />
+      {/if}
+    </div>
+  </div>
+{/if}
+
+<script>
+  import cx from "classnames";
+  import styles from "./ProjectImageMobile.module.scss";
+
+  export default {
+    helpers: {
+      cx,
+      styles,
+    },
+
+    components: {
+      IconLoading: "../IconLoading/IconLoading.html",
+    },
+
+    data: () => ({
+      loaded: false,
+    }),
+
+    methods: {
+      onLoad() {
+        this.set({
+          loaded: true,
+        });
+      },
+    },
+  };
+</script>

@@ -1,0 +1,127 @@
+{#if !hide}
+  <main
+    class={cx(
+      styles.root,
+      {[styles.rootAnimation]: animate},
+    )}
+  >
+    <div
+      class={cx(
+        styles.wrap,
+        {[styles.wrapShow]: animate},
+      )}
+    >
+      <h1 class={styles.pageTitle}>{info.title} – {info.specialty}</h1>
+
+      <div class={styles.heading}>
+        <a href="/" class={styles.back}>
+          <IconBack/>
+        </a>
+
+        <h2 class={styles.title}>Мои работы</h2>
+      </div>
+
+      {#if projects.length === 0}
+        <IconLoading/>
+      {:else}
+        {#each projects as project}
+          <ProjectCard {...project}/>
+        {/each}
+      {/if}
+    </div>
+  </main>
+{/if}
+
+<script>
+  import cx from "classnames";
+  import styles from "./Projects.module.scss";
+
+  import {apiUrl} from "../../utils/settings";
+
+  export default {
+    helpers: {
+      cx,
+      styles,
+    },
+
+    components: {
+      IconBack: "../IconBack/IconBack.html",
+      IconLoading: "../IconLoading/IconLoading.html",
+      ProjectCard: "../ProjectCard/ProjectCard.html",
+    },
+
+    oncreate() {
+      const { show } = this.get();
+
+      const request = new XMLHttpRequest();
+      request.open("get", `${apiUrl}/project-list`, true);
+
+      request.onreadystatechange = () => {
+        if (request.readyState !== XMLHttpRequest.DONE || request.status !== 200) {
+          return;
+        }
+
+        if (request.responseText) {
+          const projects = JSON.parse(request.responseText);
+
+          if (Array.isArray(projects)) {
+            this.set({
+              projects,
+            });
+          }
+        }
+      };
+
+      request.send();
+
+      this.set({
+        animate: show,
+        hide: !show,
+      });
+    },
+
+    onupdate({ changed, current, previous }) {
+      const {show, hide} = current;
+      const prevShow = previous ? previous.show : false;
+
+      if (!show && !hide && prevShow) {
+        this.set({
+          animate: false,
+        });
+
+        window.scrollTo({
+          top: 0,
+        });
+
+        setTimeout(() => {
+          if (!show) {
+            this.set({
+              hide: true,
+            });
+          }
+        }, 700);
+      }
+      else if (show && hide && !prevShow) {
+        this.set({
+          hide: false,
+        });
+
+        setTimeout(() => {
+          this.set({
+            animate: true,
+          });
+
+          window.scrollTo({
+            top: 0,
+          });
+        }, 60);
+      }
+    },
+
+    data: () => ({
+      animate: false,
+      hide: true,
+      projects: [],
+    }),
+  };
+</script>

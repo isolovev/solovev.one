@@ -1,0 +1,48 @@
+{#if desktop}
+  <div class={styles.root}>
+    <div class={styles.wrap}>
+      <picture>
+        {#if desktop_webp}
+          <source srcset={desktop_webp} type="image/webp"/>
+        {/if}
+
+        <img
+          class={styles.image}
+          alt=""
+          src={desktop}
+          on:load="onLoad()"
+        />
+      </picture>
+
+      {#if !loaded}
+        <IconLoading />
+      {/if}
+    </div>
+  </div>
+{/if}
+
+<script>
+  import styles from "./ProjectImageDesktop.module.scss";
+
+  export default {
+    helpers: {
+      styles,
+    },
+
+    components: {
+      IconLoading: "../IconLoading/IconLoading.html",
+    },
+
+    data: () => ({
+      loaded: false,
+    }),
+
+    methods: {
+      onLoad() {
+        this.set({
+          loaded: true,
+        });
+      },
+    },
+  };
+</script>

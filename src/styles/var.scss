@@ -10,10 +10,17 @@
 	@return $pixels / $context * 1rem;
 }
 
+$system-fonts: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", "Fira Sans", "Droid Sans", sans-serif;
+$base-line-height: 1.625;
+$general-line-height: px2rem(26);
+
 $brand: #011936;
 $brand-light: #5D6C7F;
 
 $text: #222;
+
+$title-size: px2rem(26);
+$title-line-height: $general-line-height;
 
 $transition-small: .2s;
 $transition: .25s;
@@ -23,6 +30,14 @@ $timeTransitionProjects: .5s;
 
 $maxWidth: 900px;
 $offsetWrap: 25px;
+
+$media-medium: 800px;
+$media-small: 400px;
+
+$projectCornerRadius: 5px;
+$projectBorderColor: #e8e8e8;
+$projectBorderWidth: 5px;
+$projectBorder: $projectBorderWidth solid $projectBorderColor;
 
 %visually-hidden {
 	position: absolute;

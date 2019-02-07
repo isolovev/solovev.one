@@ -1,0 +1,80 @@
+@import "../../styles/var";
+
+.root {
+	position: relative;
+	transition: $transition;
+	transition-property: transform, filter;
+
+  box-sizing: border-box;
+  margin: 0 0 #{3 * $general-line-height};
+
+  display: flex;
+  align-items: flex-start;
+}
+
+  .screens {
+    flex: 0 0 300px;
+    box-sizing: border-box;
+    position: relative;
+  }
+
+      .screensOffset {
+        padding-bottom: #{3 * $general-line-height};
+      }
+
+  .info {
+    flex: 1 1 auto;
+    box-sizing: border-box;
+    padding: 0 0 0 #{2 * $general-line-height};
+    order: 1;
+  }
+
+    .title {
+      font-size: px2rem(20);
+      line-height: $general-line-height;
+      margin: 0;
+      letter-spacing: 0.02em;
+    }
+
+    .text {
+      font-weight: 300;
+    }
+
+    .project {
+      margin: $general-line-height 0 0;
+    }
+
+
+@media (max-width: $media-medium) {
+  .root {
+    display: block;
+  }
+
+    .info {
+      padding: 0 0 $general-line-height;
+    }
+
+      .project {
+        margin: 0;
+      }
+
+    .screens {
+      display: flex;
+      align-items: flex-start;
+    }
+
+        .screensOffset {
+          padding: 0;
+        }
+}
+
+@media (max-width: $media-small) {
+  .root {
+    margin: 0 0 #{2 * $general-line-height};
+  }
+
+    .screens {
+      //display: none;
+      display: block;
+    }
+}
