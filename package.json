@@ -35,6 +35,7 @@
     "style-loader": "^0.23.1",
     "svelte": "^2.0.0",
     "svelte-loader": "^2.9.0",
+    "terser": "3.14",
     "webpack": "^4.7.0"
   }
 }
