@@ -59,7 +59,8 @@
 
 
 			.nav {
-				margin: $general-line-height 0 0;
+        font-size: px2rem(25);
+				margin: calc(#{$general-line-height} - 0.35em) 0 0;
 			}
 
 				.navList {
@@ -83,12 +84,11 @@
 
 						.navLink {
 							@include link();
-							font-size: 1.6rem;
+              line-height: $general-line-height;
 							text-transform: lowercase;
 							font-weight: 300;
 							padding: .35em 5px .5em;
 							position: relative;
-							line-height: 1;
 							display: block;
 
 							&::before,
@@ -100,7 +100,7 @@
 								background: $text;
 								left: 0;
 								bottom: .2em;
-								width: 50%;
+								width: calc(50% + 1px);
 								transform-origin: 100% 50%;
 								transition: $transition;
 							}
