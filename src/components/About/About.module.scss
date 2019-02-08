@@ -39,10 +39,6 @@
 			max-height: 100%;
 			overflow-y: auto;
 			-webkit-overflow-scrolling: touch;
-
-			p {
-				margin: 1rem 0 0;
-			}
 		}
 
 				.wrapAnimation {
@@ -66,21 +62,28 @@
 					display: block;
 					height: 20px;
 					margin: 0 1rem 0 -4px;
-					transform: translateY(-1px);
 					padding: 3px 4px 3px 3px;
 				}
 
 				.title {
-					font-weight: 700;
-					font-size: px2rem(20);
-					margin: 0;
-					padding: 0;
-					line-height: 1;
+          font-weight: 400;
+          font-size: $title-size;
+          line-height: $title-line-height;
+          margin: 0;
+          padding: 0;
+          flex: 1 1 auto;
 				}
 
-        .text {
-          white-space: pre-line;
+      .text {
+        p {
+          margin: 0;
+          padding: 0;
         }
+
+        p + p {
+          margin: #{$general-line-height/2} 0 0;
+        }
+      }
 
 @media (max-width: 650px),
 (orientation: landscape) and (max-height: 520px),
