@@ -4,20 +4,18 @@
       styles.root,
       {[styles.rootOnly]: only},
     )}
+    ref:root
   >
     <div class={styles.wrap}>
-      <picture>
-        {#if mobile_webp}
-          <source srcset={mobile_webp} type="image/webp"/>
-        {/if}
-
-        <img
-          class={styles.image}
-          alt=""
-          src={mobile}
-          on:load="onLoad()"
-        />
-      </picture>
+      <img
+        ref:image
+        class={styles.image}
+        alt=""
+        src=""
+        data-src={mobile}
+        data-src-webp={mobile_webp}
+        on:load="onLoad()"
+      />
 
       {#if !loaded}
         <IconLoading />
@@ -29,6 +27,7 @@
 <script>
   import cx from "classnames";
   import styles from "./ProjectImageMobile.module.scss";
+  import {createLazyImage, destroyLazyImage} from "../../utils/lazyImage";
 
   export default {
     helpers: {
@@ -50,6 +49,18 @@
           loaded: true,
         });
       },
+    },
+
+    onupdate() {
+      if (this.refs.root) {
+        this.observer = createLazyImage(this.refs.image, this.refs.root)
+      }
+    },
+
+    ondestroy() {
+      if (this.observer) {
+        destroyLazyImage(this.observer);
+      }
     },
   };
 </script>

@@ -1,18 +1,15 @@
 {#if desktop}
-  <div class={styles.root}>
+<div class={styles.root} ref:root>
     <div class={styles.wrap}>
-      <picture>
-        {#if desktop_webp}
-          <source srcset={desktop_webp} type="image/webp"/>
-        {/if}
-
-        <img
-          class={styles.image}
-          alt=""
-          src={desktop}
-          on:load="onLoad()"
-        />
-      </picture>
+      <img
+        ref:image
+        class={styles.image}
+        alt=""
+        src=""
+        data-src={desktop}
+        data-src-webp={desktop_webp}
+        on:load="onLoad()"
+      />
 
       {#if !loaded}
         <IconLoading />
@@ -23,6 +20,7 @@
 
 <script>
   import styles from "./ProjectImageDesktop.module.scss";
+  import {createLazyImage, destroyLazyImage} from "../../utils/lazyImage";
 
   export default {
     helpers: {
@@ -43,6 +41,18 @@
           loaded: true,
         });
       },
+    },
+
+    onupdate() {
+      if (this.refs.root) {
+        this.observer = createLazyImage(this.refs.image, this.refs.root)
+      }
+    },
+
+    ondestroy() {
+      if (this.observer) {
+        destroyLazyImage(this.observer);
+      }
     },
   };
 </script>
