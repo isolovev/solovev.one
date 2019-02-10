@@ -5,3 +5,33 @@
   <meta property="og:site_name" content={siteTitle}>
   <meta property="og:title" content="Обо мне">
 </svelte:head>
+
+<About
+  force
+  info={info}
+  page={about}
+/>
+
+<script>
+  import {apiUrl} from "../utils/settings";
+
+  export default {
+    components: {
+      About: "../components/About/About.html",
+    },
+
+    preload() {
+      return this
+        .fetch(`${apiUrl}/info/main`)
+        .then(r => r.json())
+        .then(({info, about}) => {
+          return {
+            info,
+            about,
+          }
+        })
+        .catch();
+    },
+  };
+</script>
+
