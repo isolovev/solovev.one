@@ -23,12 +23,7 @@
       return this
         .fetch(`${apiUrl}/info/main`)
         .then(r => r.json())
-        .then(({info}) => {
-          console.log(info);
-          return {
-            info,
-          }
-        })
+        .then(({info}) => ({info}))
         .catch();
     },
   };
