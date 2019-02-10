@@ -12,14 +12,12 @@
         {[styles.wrapShow]: animate},
       )}
     >
-      <h1 class={styles.pageTitle}>{info.title} – {info.specialty}</h1>
-
       <div class={styles.heading}>
         <a href="/" class={styles.back}>
           <IconBack/>
         </a>
 
-        <h2 class={styles.title}>Мои работы</h2>
+        <h1 class={styles.title}>Мои работы</h1>
       </div>
 
       {#if projects.length === 0}
@@ -31,6 +29,12 @@
       {/if}
     </div>
   </main>
+{/if}
+
+{#if force}
+  <div class={styles.rootInvisible}>
+    <h1>Мои работы</h1>
+  </div>
 {/if}
 
 <script>

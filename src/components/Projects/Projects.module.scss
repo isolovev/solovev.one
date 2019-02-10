@@ -31,6 +31,10 @@
 	}
 }
 
+    .rootInvisible {
+      @extend %visually-hidden;
+    }
+
 		.rootAnimation {
 			&::before,
 			&::after {
@@ -64,10 +68,6 @@
 			visibility: visible;
 			transition-delay: $timeTransitionProjects;
 		}
-
-			.pageTitle {
-				@extend %visually-hidden;
-			}
 
 			.heading {
 				display: flex;

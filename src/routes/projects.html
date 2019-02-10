@@ -5,3 +5,14 @@
   <meta property="og:site_name" content={siteTitle}>
   <meta property="og:title" content="Мои работы">
 </svelte:head>
+
+<Projects force/>
+
+<script>
+  export default {
+    components: {
+      Projects: "../components/Projects/Projects.html",
+    },
+  };
+</script>
+
