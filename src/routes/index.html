@@ -5,3 +5,31 @@
   <meta property="og:site_name" content={siteTitle}>
   <meta property="og:title" content={siteTitle}>
 </svelte:head>
+
+<Home
+  force={true}
+  data={info}
+/>
+
+<script>
+  import {apiUrl} from "../utils/settings";
+
+  export default {
+    components: {
+      Home: "../components/Home/Home.html",
+    },
+
+    preload() {
+      return this
+        .fetch(`${apiUrl}/info/main`)
+        .then(r => r.json())
+        .then(({info}) => {
+          console.log(info);
+          return {
+            info,
+          }
+        })
+        .catch();
+    },
+  };
+</script>
