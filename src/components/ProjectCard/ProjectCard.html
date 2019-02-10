@@ -5,7 +5,7 @@
 
     {#if url}
       <div class={styles.project}>
-        <a target="_blank" href={url} rel="noreferrer noopener">Ссылка на проект</a>
+        <a target="_blank" href={url} rel="noreferrer noopener">{Dictionary.linkOnProject}</a>
       </div>
     {/if}
   </div>
@@ -28,11 +28,13 @@
 <script>
   import cx from "classnames";
   import styles from "./ProjectCard.module.scss";
+  import {Dictionary} from "../../utils/Dictionary";
 
   export default {
     helpers: {
       cx,
       styles,
+      Dictionary,
     },
 
     components: {

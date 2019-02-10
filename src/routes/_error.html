@@ -5,7 +5,7 @@
 <div class="error">
   <h1>{status}</h1>
 
-    <p>{#if status === 404}Нет такой страницы :({:else}{error.message}{/if}</p>
+    <p>{#if status === 404}{Dictionary.pageError}: ({:else}{error.message}{/if}</p>
     <p>
       <a href="/">На главную</a>
     </p>
@@ -42,9 +42,12 @@
 </style>
 
 <script>
+  import {Dictionary} from "../utils/Dictionary";
+
 	export default {
 		helpers: {
-			dev: process.env.NODE_ENV === 'development'
+			dev: process.env.NODE_ENV === 'development',
+      Dictionary,
 		}
 	};
 </script>

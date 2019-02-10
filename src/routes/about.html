@@ -1,9 +1,9 @@
 <svelte:head>
-  <title>Обо мне. {siteTitle}</title>
+  <title>{Dictionary.headings.about}. {siteTitle}</title>
 
   <meta property="og:url" content="https://solovev.one/{path}">
   <meta property="og:site_name" content={siteTitle}>
-  <meta property="og:title" content="Обо мне">
+  <meta property="og:title" content={Dictionary.headings.about}>
 </svelte:head>
 
 <About
@@ -14,8 +14,13 @@
 
 <script>
   import {apiUrl} from "../utils/settings";
+  import {Dictionary} from "../utils/Dictionary";
 
   export default {
+    helpers: {
+      Dictionary,
+    },
+
     components: {
       About: "../components/About/About.html",
     },

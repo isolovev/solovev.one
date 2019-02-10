@@ -1,4 +1,8 @@
-<svelte:component this={child.component} {...child.props} siteTitle="Иван Соловьев – Frontend разработчик"/>
+<svelte:component
+  this={child.component}
+  {...child.props}
+  siteTitle={Dictionary.siteTitle}
+/>
 
 <Main projectsActive={child.segment === "projects"}/>
 
@@ -23,10 +27,12 @@
 
   import routeNames from "../utils/routeNames"
   import {apiUrl} from "../utils/settings";
+  import {Dictionary} from "../utils/Dictionary";
 
-	export default {
+  export default {
 	  helpers: {
 	    routeNames,
+      Dictionary,
 	  },
 
 		components: {
@@ -59,8 +65,8 @@
 
 		data: () => ({
       info: {
-        main: "Привет, я – Ваня",
-        specialty: "Frontend разработчик",
+        main: Dictionary.info.main,
+        specialty: Dictionary.info.specialty,
         title: "",
       },
       about: {

@@ -1,15 +1,21 @@
 <svelte:head>
-  <title>Мои работы. {siteTitle}</title>
+  <title>{Dictionary.headings.projects}. {siteTitle}</title>
 
   <meta property="og:url" content="https://solovev.one/{path}">
   <meta property="og:site_name" content={siteTitle}>
-  <meta property="og:title" content="Мои работы">
+  <meta property="og:title" content={Dictionary.headings.projects}>
 </svelte:head>
 
 <Projects force/>
 
 <script>
+  import {Dictionary} from "../utils/Dictionary";
+
   export default {
+    helpers: {
+      Dictionary,
+    },
+
     components: {
       Projects: "../components/Projects/Projects.html",
     },

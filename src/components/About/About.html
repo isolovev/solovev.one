@@ -11,7 +11,7 @@
           <h1 class={styles.pageTitle}>{info.title} – {info.specialty}</h1>
 
           <div class={styles.heading}>
-            <a href={routeNames.home} class={styles.back}>
+            <a href={routeNames.home} class={styles.back} aria-label={Dictionary.goToHome}>
               <IconBack/>
             </a>
 
@@ -33,12 +33,14 @@
 
   import styles from "./About.module.scss"
   import routeNames from "../../utils/routeNames"
+  import {Dictionary} from "../../utils/Dictionary"
 
   export default {
     helpers: {
       cx,
       styles,
       routeNames,
+      Dictionary,
     },
 
     components: {

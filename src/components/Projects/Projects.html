@@ -13,11 +13,11 @@
       )}
     >
       <div class={styles.heading}>
-        <a href="/" class={styles.back}>
+        <a href="/" class={styles.back} aria-label={Dictionary.goToHome}>
           <IconBack/>
         </a>
 
-        <h1 class={styles.title}>Мои работы</h1>
+        <h1 class={styles.title}>{Dictionary.headings.projects}</h1>
       </div>
 
       {#if projects.length === 0}
@@ -33,7 +33,7 @@
 
 {#if force}
   <div class={styles.rootInvisible}>
-    <h1>Мои работы</h1>
+    <h1>{Dictionary.headings.projects}</h1>
   </div>
 {/if}
 
@@ -42,11 +42,13 @@
   import styles from "./Projects.module.scss";
 
   import {apiUrl} from "../../utils/settings";
+  import {Dictionary} from "../../utils/Dictionary";
 
   export default {
     helpers: {
       cx,
       styles,
+      Dictionary,
     },
 
     components: {
