@@ -21,6 +21,7 @@
       </div>
 
       {#if projects.length === 0}
+        <div class={styles.loading}>{Dictionary.loading}</div>
         <IconLoading/>
       {:else}
         {#each projects as project}
