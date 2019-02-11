@@ -6,6 +6,7 @@
     "dev": "sapper dev",
     "build": "sapper build",
     "export": "sapper export",
+    "deploy": "sapper export && mv __sapper__/export/404/index.html __sapper__/export/404.html && rm __sapper__/export/service-worker-index.html",
     "start": "node __sapper__/build",
     "cy:run": "cypress run",
     "cy:open": "cypress open",
