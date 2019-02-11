@@ -1,3 +1,8 @@
+{#if preloading}
+  <div>{Dictionary.loading}</div>
+  <IconLoading />
+{/if}
+
 <svelte:component
   this={child.component}
   {...child.props}
@@ -21,6 +26,8 @@
   info={info}
 />
 
+<a href="404" style="display:none!important;" aria-hidden="true">404</a>
+
 <script>
   import "../styles/global.scss"
 
@@ -39,6 +46,7 @@
 			Home: "../components/Home/Home.html",
 			Page: "../components/Page/Page.html",
 			Projects: "../components/Projects/Projects.html",
+      IconLoading: "../components/IconLoading/IconLoading.html",
 		},
 
 		oncreate() {

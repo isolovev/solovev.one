@@ -1,25 +1,21 @@
 <svelte:head>
-  <title>{status}</title>
+  <title>{Dictionary.pageError}</title>
 </svelte:head>
 
 <Main />
-
-<Error
-  title={status}
-  text={status === 404 ? Dictionary.pageError : error.message}
-/>
+<Error title={Dictionary.pageError} />
 
 <script>
   import {Dictionary} from "../utils/Dictionary";
 
-	export default {
-		helpers: {
+  export default {
+    helpers: {
       Dictionary,
-		},
+    },
 
     components: {
       Error: "../components/Error/Error.html",
       Main: "../components/Main/Main.html",
     },
-	};
+  };
 </script>
