@@ -1,0 +1,109 @@
+{#if !hide || force}
+  <main class={styles.root}>
+    <div class={styles.container}>
+      <div
+        class={cx(
+          styles.wrap,
+          {[styles.wrapAnimation]: animate},
+        )}
+      >
+        {#if page.title}
+          <div class={styles.heading}>
+            <a href={routeNames.home} class={styles.back} aria-label={Dictionary.goToHome}>
+              <IconBack/>
+            </a>
+
+            <h1 class={styles.title}>{page.title}</h1>
+          </div>
+
+          <div class={styles.text}>{@html text}</div>
+        {:else}
+          <div class={styles.loading}>{Dictionary.loading}</div>
+          <IconLoading/>
+        {/if}
+      </div>
+    </div>
+  </main>
+{/if}
+
+
+<script>
+  import cx from "classnames"
+
+  import styles from "./Page.module.scss"
+  import routeNames from "../../utils/routeNames"
+  import {Dictionary} from "../../utils/Dictionary"
+
+  export default {
+    helpers: {
+      cx,
+      styles,
+      routeNames,
+      Dictionary,
+    },
+
+    components: {
+      IconBack: "../IconBack/IconBack.html",
+      IconLoading: "../IconLoading/IconLoading.html",
+    },
+
+    oncreate() {
+      const { show } = this.get();
+
+      this.set({
+        animate: show,
+        hide: !show,
+      });
+    },
+
+    onupdate({ changed, current, previous }) {
+      const {show, hide} = current;
+      const prevShow = previous ? previous.show : false;
+
+      if (!show && !hide && prevShow) {
+        this.set({
+          animate: false,
+        });
+
+        setTimeout(() => {
+          if (!show) {
+            this.set({
+              hide: true,
+            });
+          }
+        }, 400);
+
+        return;
+      }
+
+
+      if (show && hide && !prevShow) {
+        this.set({
+          hide: false,
+        });
+
+        setTimeout(() => {
+          this.set({
+            animate: true,
+          });
+        }, 60);
+      }
+    },
+
+    data: () => ({
+      animate: false,
+      hide: true,
+      page: {
+        title: "",
+        text: "",
+      },
+    }),
+
+    computed: {
+      text: ({ page }) => page.text
+        .split('\n\n\n')
+        .map(item => `<p>${item}</p>`)
+        .join(''),
+    },
+  };
+</script>

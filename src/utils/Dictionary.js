@@ -15,6 +15,7 @@ const _dictionary = {
     },
 
     pageError: "Нет такой страницы",
+    loading: "Загрузка...",
   },
 };
 

@@ -6,9 +6,8 @@
   <meta property="og:title" content={Dictionary.headings.about}>
 </svelte:head>
 
-<About
+<Page
   force
-  info={info}
   page={about}
 />
 
@@ -22,7 +21,7 @@
     },
 
     components: {
-      About: "../components/About/About.html",
+      Page: "../components/Page/Page.html",
     },
 
     preload() {
