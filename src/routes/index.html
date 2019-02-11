@@ -8,6 +8,7 @@
 
 <Home
   force={true}
+  show={false}
   data={info}
 />
 
@@ -26,5 +27,12 @@
         .then(({info}) => ({info}))
         .catch();
     },
+
+    data: () => ({
+      info: {
+        main: "",
+        specialty: "",
+      },
+    }),
   };
 </script>
