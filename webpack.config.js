@@ -228,7 +228,7 @@ module.exports = {
 			new MiniCssExtractPlugin({
 				// Options similar to the same options in webpackOptions.output
 				// both options are optional
-				filename: `../client/css/${dev ? 'main' : '[contenthash:8]'}.css`,
+				filename: `../client/css/main.css`,
 			}),
 		],
 
