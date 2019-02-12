@@ -1,8 +1,3 @@
-{#if preloading}
-  <div>{Dictionary.loading}</div>
-  <IconLoading />
-{/if}
-
 <svelte:component
   this={child.component}
   {...child.props}
@@ -51,7 +46,6 @@
 			Home: "../components/Home/Home.html",
 			Page: "../components/Page/Page.html",
 			Projects: "../components/Projects/Projects.html",
-      IconLoading: "../components/IconLoading/IconLoading.html",
 		},
 
 		oncreate() {
