@@ -6,10 +6,13 @@
   <meta property="og:title" content={Dictionary.headings.about}>
 </svelte:head>
 
-<Page
-  force
-  page={about}
-/>
+<noscript>
+  <Page
+    force
+    show={false}
+    page={about}
+  />
+</noscript>
 
 <script>
   import {apiUrl} from "../utils/settings";

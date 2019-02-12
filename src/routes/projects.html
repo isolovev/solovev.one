@@ -6,7 +6,12 @@
   <meta property="og:title" content={Dictionary.headings.projects}>
 </svelte:head>
 
-<Projects force/>
+<noscript>
+  <Projects
+    force
+    show={false}
+  />
+</noscript>
 
 <script>
   import {Dictionary} from "../utils/Dictionary";

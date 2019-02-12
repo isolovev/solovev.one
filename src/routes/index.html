@@ -6,11 +6,13 @@
   <meta property="og:title" content={siteTitle}>
 </svelte:head>
 
-<Home
-  force={true}
-  show={false}
-  data={info}
-/>
+<noscript>
+  <Home
+    force={true}
+    show={false}
+    data={info}
+  />
+</noscript>
 
 <script>
   import {apiUrl} from "../utils/settings";
