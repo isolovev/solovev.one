@@ -53,7 +53,8 @@
 
 @media (max-width: $media-medium) {
   .root {
-    height: 285px;
+    max-height: 285px;
+    height: auto;
     width: 100%;
     padding: 0;
     margin-right: $general-line-height;
