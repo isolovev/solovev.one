@@ -1,13 +1,15 @@
 - var siteName = "Иван Соловьев – Frontend разработчик";
 
 mixin head(title)
-  meta(charset="UTF-8")
-  meta(name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no,viewport-fit=cover")
-  meta(http-equiv="x-ua-compatible" content="ie=edge")
+	meta(charset="UTF-8")
+	meta(name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no,viewport-fit=cover")
+	meta(http-equiv="x-ua-compatible" content="ie=edge")
 
-  title= title ? `${title}. ${siteName}` : siteName
+	title= title ? `${title}. ${siteName}` : siteName
 
-  meta(property="og:locale" content="ru_RU")
-  meta(property="og:type" content="website")
-  block
+	meta(property="og:locale" content="ru_RU")
+	meta(property="og:type" content="website")
+	
+	block
 
+	link(rel="stylesheet" href="../index.scss")
