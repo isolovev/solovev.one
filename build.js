@@ -28,6 +28,7 @@ const mainBundler = new Parcel(
 	],
 	{
 		sourceMaps: false,
+		scopeHoist: true,
 	}
 );
 
@@ -55,7 +56,7 @@ async function build() {
 			rule.selector = rule.selector.replace(/\.[\w_-]+/g, str => {
 				const kls = str.substr(1);
 
-				if (!classesList[kls]) {
+				if (!classesList[kls] && !/^js-/.test(kls)) {
 					lastUsed += 1;
 					classesList[kls] = String.fromCharCode(startChar + lastUsed);
 				}
@@ -89,7 +90,7 @@ async function build() {
 				class: i.attrs.class
 					.split(' ')
 					.map((kls) => {
-						if (!classesList[kls]) {
+						if (!classesList[kls] && !/^js-/.test(kls)) {
 							process.stderr.write(`Unused class .${ kls }\n`);
 							process.exit(1);
 						}
@@ -122,7 +123,6 @@ async function build() {
 				}
 
 				filePath = path.join(fileDirPath, "index.html");
-				console.log(filePath);
 			}
 
 			await writeFile(
