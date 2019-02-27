@@ -1,6 +1,6 @@
 @import '../../styles/var';
 
-.root {
+.home {
 	position: fixed;
 	top: 0;
 	right: 0;
@@ -15,12 +15,16 @@
 	transition: $transition;
 }
 
-		.rootShow {
+		.home--hide {
+			display: none;
+		}
+
+		.home--show {
 			opacity: 1;
 			visibility: visible;
 		}
 
-	.container {
+	.home__container {
 		position: relative;
 		z-index: 1;
 		height: 100%;
@@ -32,24 +36,24 @@
 		align-items: center;
 	}
 
-		.wrap {
+		.home__wrap {
 			flex: 0 0 auto;
 			text-shadow: 0 2px 4px rgba(#ddd, .4);
 			box-sizing: border-box;
 		}
 
-				.wrapAnimation {
+				.home__wrap--animation {
 					animation: wrapAnimation 1.3s both 0.1s;
 				}
 
-			.title {
+			.home__title {
 				font-size: px2rem(52);
 				line-height: 2 * $general-line-height;
 				font-weight: 400;
 				text-shadow: 1px 0 2px rgba($text, .1);
 			}
 
-			.subtitle {
+			.home__subtitle {
 				font-size: px2rem(35);
         font-weight: 300;
         line-height: 2 * $general-line-height;
@@ -58,74 +62,13 @@
 			}
 
 
-			.nav {
+			.home-nav {
         font-size: px2rem(25);
 				margin: calc(#{$general-line-height} - 0.35em) 0 0;
 			}
 
-				.navList {
-					display: flex;
-					justify-content: space-between;
-					margin: 0;
-					padding: 0;
-					list-style: none;
-				}
-
-					.navItem {
-						margin: 0;
-						padding: 0;
-						display: block;
-						transform: translateZ(0);
-
-						&:not(:first-child) {
-							margin-left: 2rem;
-						}
-					}
-
-						.navLink {
-							@include link();
-              line-height: $general-line-height;
-							text-transform: lowercase;
-							font-weight: 300;
-							padding: .35em 5px .5em;
-							position: relative;
-							display: inline-block;
-
-							&::before,
-							&::after {
-								content: '';
-								display: block;
-								position: absolute;
-								height: 2px;
-								background: $text;
-								left: 0;
-								bottom: .2em;
-								width: calc(50% + 1px);
-								transform-origin: 100% 50%;
-								transition: $transition;
-							}
-
-							&::before {
-								left: 50%;
-								transform-origin: 0 50%;
-							}
-
-
-							&:hover,
-							&:focus {
-								&::before,
-								&::after {
-									transform: scale(0);
-								}
-							}
-
-							&:focus {
-								outline: 7px auto $brand;
-							}
-						}
-
-@media (max-width: 1060px) {
-	.wrap {
+@media (max-width: $media-big) {
+	.home__wrap {
 		position: relative;
 		z-index: 2;
 
@@ -143,23 +86,23 @@
 		}
 	}
 
-	.title {
+	.home__title {
 		font-size: 3rem;
 	}
 
-	.subtitle {
+	.home__subtitle {
 		font-size: px2rem(32);
     letter-spacing: 0.03em;
 	}
 }
 
-@media (max-width: 700px) {
-	.container {
+@media (max-width: $media-small-medium) {
+	.home__container {
 		align-items: flex-end;
 		max-width: none;
 	}
 
-	.wrap {
+	.home__wrap {
 		background: rgba(#fff, .4);
 		padding: 1rem $offsetWrap;
 		width: 100%;
@@ -170,41 +113,21 @@
 		}
 	}
 
-	.title {
+	.home__title {
 		font-size: 2.5rem;
 	}
 
-	.subtitle {
+	.home__subtitle {
 		font-size: 1.85rem;
-	}
-
-	.navList {
-		flex-wrap: wrap;
-		justify-content: space-around;
-		margin: -#{$offsetWrap} 0 0;
-	}
-
-	.navItem {
-		flex: 0 0 50%;
-		min-width: 250px;
-		padding: $offsetWrap 0 0;
-
-		&:not(:first-child) {
-			margin: 0;
-		}
-	}
-
-	.navLink {
-		display: inline;
 	}
 }
 
-@media (max-width: 400px) {
-	.title {
+@media (max-width: $media-small) {
+	.home__title {
 		font-size: 2rem;
 	}
 
-	.subtitle {
+	.home__subtitle {
 		font-size: 1.5rem;
 	}
 }
