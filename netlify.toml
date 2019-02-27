@@ -1,13 +1,11 @@
 [[headers]]
   for = "/*"
   [headers.values]
-    Content-Security-Policy = "default-src 'self'; img-src https://solovev.one https://folio.solovev.one; script-src 'self' 'unsafe-inline'; connect-src https://solovev.one https://folio.solovev.one;"
+    Content-Security-Policy = "default-src 'self'; img-src https://solovev.one https://folio.solovev.one; script-src 'self' 'unsafe-inline'; connect-src https://solovev.one https://folio.solovev.one; style-src 'self' 'unsafe-inline'"
     Strict-Transport-Security = "max-age=31536000; includeSubDomains"
     X-Content-Type-Options = "nosniff"
     X-Frame-Options = "DENY"
     X-XSS-Protection = "1; mode=block"
-
-    Link = "</client/css/main.css>; rel=preload; as=style; crossorigin=anonymous"
 
 [[redirects]]
   from = "https://solovev.netlify.com/*"
