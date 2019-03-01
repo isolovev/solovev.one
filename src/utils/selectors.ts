@@ -1,3 +1,4 @@
+export const selectorTemplateHome = "#home";
 export const selectorHomeRoot = ".home";
 export const selectorHomeTitle = ".home__title";
 export const selectorHomeSubTitle = ".home__subtitle";

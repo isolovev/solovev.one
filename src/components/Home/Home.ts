@@ -4,7 +4,13 @@ import Nav from "../Nav/Nav";
 import request from "../../utils/request";
 import routeNames from "../../utils/routeNames";
 import { getElement } from "../../utils/getElements";
-import { selectorHomeRoot, selectorHomeSubTitle, selectorHomeTitle } from "../../utils/selectors";
+import {
+	selectorTemplateHome,
+	selectorHomeRoot,
+	selectorHomeSubTitle,
+	selectorHomeTitle,
+} from "../../utils/selectors";
+import { appElement } from "../../utils/settings";
 
 const classes = {
 	hide: "home--hide",
@@ -12,7 +18,9 @@ const classes = {
 };
 
 class Home implements Page {
-	private readonly root: HTMLElement = getElement(selectorHomeRoot);
+	private readonly template = getElement(selectorTemplateHome) as HTMLTemplateElement;
+	private readonly rootFragment: DocumentFragment = document.importNode(this.template.content, true);
+	private readonly root: HTMLElement = getElement(selectorHomeRoot, this.rootFragment);
 
 	constructor() {
 		Nav.build([
@@ -32,6 +40,7 @@ class Home implements Page {
 				getElement(selectorHomeSubTitle, this.root).innerText = subtitle;
 			});
 
+		appElement.appendChild(this.rootFragment);
 	}
 
 	public show(): void {
