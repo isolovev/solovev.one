@@ -12,6 +12,7 @@ import {
 	selectorNav,
 } from "../../utils/selectors";
 import { appElement } from "../../utils/settings";
+import { getTransitionTime } from "../../utils/getTransitionTime";
 
 const classes = {
 	hide: "home--hide",
@@ -22,7 +23,7 @@ class Home implements Page {
 	private readonly template = getElement(selectorTemplateHome) as HTMLTemplateElement;
 	private readonly rootFragment: DocumentFragment = document.importNode(this.template.content, true);
 	private readonly root: HTMLElement = getElement(selectorHomeRoot, this.rootFragment);
-	private readonly nav: HTMLElement = getElement(selectorNav, this.rootFragment);
+	private readonly rootTransition: number = 1;
 
 	constructor() {
 		const nav = getElement(selectorNav, this.root);
@@ -45,10 +46,12 @@ class Home implements Page {
 			});
 
 		appElement.appendChild(this.rootFragment);
+		this.rootTransition = getTransitionTime(this.root);
 	}
 
 	public show(): void {
 		this.root.classList.remove(classes.hide);
+		this.root.hidden = false;
 
 		requestAnimationFrame(() => {
 			this.root.classList.add(classes.show);
@@ -56,7 +59,16 @@ class Home implements Page {
 	}
 
 	public hide(): void {
+		if (!this.root.classList.contains(classes.show)) {
+			return;
+		}
 
+		this.root.classList.remove(classes.show);
+
+		setTimeout(() => {
+			this.root.classList.add(classes.hide);
+			this.root.hidden = true;
+		}, this.rootTransition);
 	}
 }
 
