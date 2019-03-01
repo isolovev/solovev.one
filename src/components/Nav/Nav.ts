@@ -1,5 +1,5 @@
 import { getElement } from "../../utils/getElements";
-import { selectorNav, selectorNavLink, selectorTemplateNav } from "../../utils/selectors";
+import { selectorNavLink, selectorTemplateNav } from "../../utils/selectors";
 
 interface BuildList {
 	name: string;
@@ -7,17 +7,16 @@ interface BuildList {
 }
 
 class Nav {
-	private readonly nav: HTMLElement = getElement(selectorNav);
 	private readonly template: DocumentFragment = (getElement(selectorTemplateNav) as HTMLTemplateElement).content;
 
-	public build(list: BuildList[]): void {
+	public build(root: HTMLElement, list: BuildList[]): void {
 		list.forEach((item) => {
 			const itemHtmlFragment = document.importNode(this.template, true);
 			const linkElement = getElement(selectorNavLink, itemHtmlFragment) as HTMLLinkElement;
 			linkElement.href = item.url;
 			linkElement.innerText = item.name;
 
-			this.nav.appendChild(itemHtmlFragment);
+			root.appendChild(itemHtmlFragment);
 		});
 	}
 }

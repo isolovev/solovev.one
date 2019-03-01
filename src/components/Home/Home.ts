@@ -9,6 +9,7 @@ import {
 	selectorHomeRoot,
 	selectorHomeSubTitle,
 	selectorHomeTitle,
+	selectorNav,
 } from "../../utils/selectors";
 import { appElement } from "../../utils/settings";
 
@@ -21,9 +22,12 @@ class Home implements Page {
 	private readonly template = getElement(selectorTemplateHome) as HTMLTemplateElement;
 	private readonly rootFragment: DocumentFragment = document.importNode(this.template.content, true);
 	private readonly root: HTMLElement = getElement(selectorHomeRoot, this.rootFragment);
+	private readonly nav: HTMLElement = getElement(selectorNav, this.rootFragment);
 
 	constructor() {
-		Nav.build([
+		const nav = getElement(selectorNav, this.root);
+
+		Nav.build(nav, [
 			{
 				name: "Обо мне",
 				url: routeNames.about,
