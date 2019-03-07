@@ -1,1 +1,4 @@
-@import "styles/global.css";
+@import url("./styles/global.css");
+@import url("./components/Home/Home.css");
+@import url("./components/Photo/Photo.css");
+@import url("./components/More/More.css");
