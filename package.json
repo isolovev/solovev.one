@@ -35,9 +35,7 @@
   ],
   "postcss": {
     "plugins": {
-      "postcss-custom-properties": {
-        "preserve": false
-      },
+      "postcss-custom-properties": {},
       "postcss-pxtorem": {
         "rootValue": 16,
         "mediaQuery": true,
