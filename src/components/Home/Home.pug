@@ -1,5 +1,6 @@
 include ../Photo/Photo
 include ../More/More
+include ../ExternalLink/ExternalLink
 
 mixin Home
 	.home
@@ -17,10 +18,10 @@ mixin Home
 
 			.home__social
 				!= `Найти меня можно здесь: `
-				a(href="") Telegram
+				+ExternalLink("http://t.me/solovev_one") Telegram
 				!= `, `
-				a(href="") Написать на e-mail
+				+ExternalLink("mailto:ivan@solovev.one") ivan@solovev.one
 				!= `, `
-				a(href="") GitHub
+				+ExternalLink("https://github.com/isolovev") GitHub
 
 			+More
