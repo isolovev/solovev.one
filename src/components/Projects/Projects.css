@@ -2,82 +2,44 @@
 	position: relative;
 	z-index: 2;
 	width: 100%;
-	height: 100%;
+	min-height: 100%;
 	max-width: 900px;
 	margin: 0 auto;
-	transition: var(--time-transition-projects);
+	transition: var(--transition);
+	opacity: 0;
+	visibility: hidden;
+	box-sizing: border-box;
+	padding: 25px;
+	padding-right: calc(var(--wrap-left) + 25px);
+	padding-left: calc(var(--wrap-right) + 25px);
+	background: #fff;
 }
 
-	.projects::before,
-	.projects::after {
-		content: '';
-		display: block;
-		position: absolute;
-		top: 0;
-		left: 0;
-		right: 0;
-		height: 50vh;
-		background: var(--brand);
-		opacity: 0;
-		transform: translateX(-100%);
-		transition: var(--time-transition-projects);
-	}
-
-	.projects::after {
-		top: 50vh;
-		transform: translateX(100%);
-	}
-
-			.projects--show::before,
-			.projects--show::after {
-				transform: translateX(0);
-				opacity: 1;
-				background: #fff;
-			}
-
-	.projects__wrap {
-		width: 100%;
-		min-height: 100%;
-		position: relative;
-		z-index: 3;
-		opacity: 0;
-		visibility: hidden;
-		transition: var(--transition) 0s;
-		max-width: 900px;
-		margin: 0 auto;
-		box-sizing: border-box;
-		padding: 25px;
-		padding-right: calc(var(--wrap-left) + 25px);
-		padding-left: calc(var(--wrap-right) + 25px);
-		background: #fff;
-	}
-
-			.projects__wrap--show {
-				opacity: 1;
-				visibility: visible;
-				transition: var(--transition) var(--transition);
-			}
-
-		.projects__heading {
-			display: flex;
-			align-items: center;
-			margin: 0 0 40px;
-			padding: 0 calc(14px + 1rem) 0 0;
+		.projects--show {
+			opacity: 1;
+			visibility: visible;
 		}
 
-			.projects__back {
-				display: block;
-				height: 20px;
-				margin: 0 1rem 0 -4px;
-				padding: 3px 4px 3px 3px;
-			}
+	.projects__heading {
+		display: flex;
+		align-items: center;
+		margin: 0 0 40px;
+		padding: 0 calc(14px + 1rem) 0 0;
+	}
 
-			.projects__title {
-				font-weight: 400;
-				font-size: 24px;
-				line-height: var(--base-line-height);
-				margin: 0;
-				padding: 0;
-				flex: 1 1 auto;
-				text-align: center;
-			}
+		.projects__back {
+			display: block;
+			height: 20px;
+			margin: 0 1rem 0 -4px;
+			padding: 3px 4px 3px 3px;
+		}
+
+		.projects__title {
+			font-weight: 400;
+			font-size: 24px;
+			line-height: var(--base-line-height);
+			margin: 0;
+			padding: 0;
+			flex: 1 1 auto;
+			text-align: center;
+		}

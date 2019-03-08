@@ -5,7 +5,6 @@ import { getTransitionTime } from "../../utils/getTransitionTime";
 
 class Projects {
 	private root = getElement(".projects");
-	private wrap = getElement(".projects__wrap");
 	private list = getElement(".projects__list");
 
 	private timeTransition = getTransitionTime(this.root);
@@ -17,20 +16,21 @@ class Projects {
 
 	public show(): void {
 		this.root.hidden = false;
+		// tslint:disable-next-line:no-unused-expression
+		void this.root.offsetWidth;
 
-		setTimeout(() => {
-			this.root.classList.add("projects--show");
-			this.wrap.classList.add("projects__wrap--show");
-		}, 1);
+		this.root.classList.add("projects--show");
 	}
 
-	public hide(): void {
-		this.root.classList.remove("projects--show");
-		this.wrap.classList.remove("projects__wrap--show");
+	public hide(): Promise<never> {
+		return new Promise((resolve) => {
+			this.root.classList.remove("projects--show");
 
-		setTimeout(() => {
-			this.root.hidden = true;
-		}, this.timeTransition);
+			setTimeout(() => {
+				this.root.hidden = true;
+				resolve();
+			}, this.timeTransition);
+		});
 	}
 
 	private createList = (items: DraftItem[]): void => {
