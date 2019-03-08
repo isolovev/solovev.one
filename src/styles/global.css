@@ -13,9 +13,10 @@
 
 	--brand: #FF2D55;
 	--brand-light: #5856D6;
+	--project-border: #E8E8E8;
 
 	--transition: 0.25s;
-	--time--transition--projects: 0.5s;
+	--time-transition-projects: 0.5s;
 }
 
 html {

@@ -1,0 +1,11 @@
+include ../IconBack/IconBack
+
+mixin Projects
+	section.projects(hidden)
+		.projects__wrap
+			.projects__heading
+				a.projects__back(href="/" aria-hidden="Вернуться на главную страницу")
+					+IconBack
+				h1.projects__title Последние работы
+
+			.projects__list

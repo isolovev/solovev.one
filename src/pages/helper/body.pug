@@ -1,4 +1,7 @@
 include ../../components/Home/Home
+include ../../components/Projects/Projects
+include ../../components/Draft/Draft
+include ../../components/DraftImage/DraftImage
 
 mixin body
 	body
@@ -6,5 +9,9 @@ mixin body
 			block
 
 			+Home
+			+Projects
+
+		+Draft
+		+DraftImage
 
 		script(src="../index.ts")

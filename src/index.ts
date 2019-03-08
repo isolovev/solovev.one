@@ -2,7 +2,10 @@
 import route from "riot-route";
 
 // import Home from "./components/Home/Home";
-//
+import Projects from "./components/Projects/Projects";
+
+const projects = new Projects();
+
 // import routeNames from "./utils/routeNames";
 //
 // route(routeNames.home, () => {
