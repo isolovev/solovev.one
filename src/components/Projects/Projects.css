@@ -5,6 +5,7 @@
 	height: 100%;
 	max-width: 900px;
 	margin: 0 auto;
+	transition: var(--time-transition-projects);
 }
 
 	.projects::before,
@@ -16,12 +17,10 @@
 		left: 0;
 		right: 0;
 		height: 50vh;
-		background: #fff;
-		/*opacity: 0;*/
-		/*transform: translateX(-100%);*/
+		background: var(--brand);
+		opacity: 0;
+		transform: translateX(-100%);
 		transition: var(--time-transition-projects);
-		transition-property: transform, opacity;
-		transition-delay: var(--transition);
 	}
 
 	.projects::after {
@@ -33,7 +32,7 @@
 			.projects--show::after {
 				transform: translateX(0);
 				opacity: 1;
-				transition-delay: 0s;
+				background: #fff;
 			}
 
 	.projects__wrap {
@@ -41,10 +40,9 @@
 		min-height: 100%;
 		position: relative;
 		z-index: 3;
-		/*opacity: 0;*/
-		/*visibility: hidden;*/
-		transition: var(--transition);
-		transition-delay: 0s;
+		opacity: 0;
+		visibility: hidden;
+		transition: var(--transition) 0s;
 		max-width: 900px;
 		margin: 0 auto;
 		box-sizing: border-box;
@@ -57,7 +55,7 @@
 			.projects__wrap--show {
 				opacity: 1;
 				visibility: visible;
-				transition-delay: var(--time-transition-projects);
+				transition: var(--transition) var(--transition);
 			}
 
 		.projects__heading {
