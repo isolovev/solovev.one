@@ -1,4 +1,5 @@
 import { getElementsList } from "./getElements";
+import { webPSupport } from "./webPSupport";
 
 export default function lazyImages(entries: IntersectionObserverEntry[]) {
 	entries
@@ -9,7 +10,14 @@ export default function lazyImages(entries: IntersectionObserverEntry[]) {
 			Array.prototype.slice.call(listImages)
 				.filter((image: HTMLImageElement) => !image.src)
 				.forEach((image: HTMLImageElement) => {
-					image.src = image.getAttribute("data-src");
+					webPSupport()
+						.then(() => image.src = image.getAttribute("data-src-webp"))
+						.catch(() => image.src = image.getAttribute("data-src"));
+
+					image.onload = () => {
+						// @ts-ignore
+						image.nextElementSibling.style.display = "none";
+					};
 				});
 		});
 }

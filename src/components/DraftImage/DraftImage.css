@@ -67,6 +67,16 @@
 			width: 100%;
 		}
 
+		.draft-image__spinner {
+			display: block;
+			width: 34px;
+			height: 42px;
+			position: absolute;
+			top: calc(50% - 21px);
+			left: calc(50% - 17px);
+			animation: spinner 1s both infinite linear;
+		}
+
 @media (max-width: 750px) {
 	.draft-image--desktop {
 		max-height: 285px;
@@ -110,5 +120,15 @@
 
 	.draft-image--only-mobile {
 		margin: 0;
+	}
+}
+
+@keyframes spinner {
+	0%, 40% {
+		transform: scale(1);
+	}
+
+	30%, 60% {
+		transform: scale(1.1);
 	}
 }

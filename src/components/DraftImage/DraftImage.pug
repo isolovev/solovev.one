@@ -1,5 +1,8 @@
+include ../Icon/Icon
+
 mixin DraftImage
 	template#draft-image
 		.draft-image(aria-hidden="true")
 			.draft-image__wrap
 				img.draft-image__picture(alt="")
+				+Icon("logo").draft-image__spinner
