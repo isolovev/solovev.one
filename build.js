@@ -17,13 +17,12 @@ const templatePath = path.join(__dirname, "src", "pages");
 const distPath = path.join(__dirname, "dist");
 const startChar = 'a'.charCodeAt(0);
 
-const separatePages = ["about", "projects"];
+const separatePages = ["projects"];
 
 const mainBundler = new Parcel(
 	[
 		path.join(templatePath, "index.pug"),
 		path.join(templatePath, "404.pug"),
-		path.join(templatePath, "about.pug"),
 		path.join(templatePath, "projects.pug"),
 	],
 	{
