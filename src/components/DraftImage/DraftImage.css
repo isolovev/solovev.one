@@ -102,6 +102,7 @@
 		.draft-image__wrap {
 			position: static;
 			width: 100%;
+			min-height: 120px;
 		}
 }
 
