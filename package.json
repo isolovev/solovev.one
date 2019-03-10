@@ -10,7 +10,6 @@
     "test": "run-p --race start cy:run"
   },
   "dependencies": {
-    "classnames": "^2.2.6",
     "intersection-observer": "^0.5.1",
     "riot-route": "^3.1.4"
   },
