@@ -3,7 +3,7 @@ import { getElement } from "../../utils/getElements";
 class Home {
 	private root = getElement(".home");
 
-	public show(): void {
+	public show = () => {
 		this.root.classList.remove("home--hide");
 	}
 
