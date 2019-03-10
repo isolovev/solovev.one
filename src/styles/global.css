@@ -12,7 +12,6 @@
 	--text-color: #222;
 
 	--brand: #FF2D55;
-	--brand-light: #5856D6;
 	--project-border: #E8E8E8;
 
 	--transition: 0.25s;
@@ -73,10 +72,6 @@ a:not([class]) {
   border-bottom: 1px solid currentColor;
 	position: relative;
 }
-
-	a:not([class]):hover {
-		border-bottom-color: transparent;
-	}
 
 	a:not([class])::before {
 		content: '';
