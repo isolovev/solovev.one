@@ -11,11 +11,35 @@ const Parcel = require("parcel-bundler");
 
 const PostHTML = require('posthtml');
 const MQPacker = require('css-mqpacker');
+const postcssCustomProperties = require('postcss-custom-properties');
 const PostCSS = require('postcss');
 
 const templatePath = path.join(__dirname, "src", "pages");
 const distPath = path.join(__dirname, "dist");
-const startChar = 'a'.charCodeAt(0);
+
+const options = {
+	alphabet: 'abcefghijklmnopqrstuvwxyz',
+	length: 1,
+	index: 0
+};
+
+function generateCssClassName() {
+	let res = '';
+
+	for (let i = options.length - 1; i >= 0; i--) {
+		const x = Math.pow(options.alphabet.length, i);
+		const n = Math.floor(options.index / x);
+		res += options.alphabet[n % options.alphabet.length];
+	}
+
+	options.index++;
+	if (options.index > Math.pow(options.alphabet.length, options.length) - 1) {
+		options.length++;
+		options.index = 0;
+	}
+
+	return res;
+}
 
 const separatePages = ["projects"];
 
@@ -57,7 +81,7 @@ async function build() {
 
 				if (!classesList[kls] && !/^js-/.test(kls)) {
 					lastUsed += 1;
-					classesList[kls] = String.fromCharCode(startChar + lastUsed);
+					classesList[kls] = generateCssClassName();
 				}
 
 				return '.' + classesList[kls]
@@ -65,12 +89,15 @@ async function build() {
 		});
 	}
 
-	await writeFile(
-		cssFile.name,
-		PostCSS([cssPlugin, MQPacker])
-			.process(cssData, { from: cssFile.name })
-			.css
-	);
+	PostCSS([
+		postcssCustomProperties({
+			preserve: false,
+		}),
+		cssPlugin,
+		MQPacker
+	])
+		.process(cssData, { from: cssFile.name })
+		.then(({css}) => writeFile(cssFile.name, css));
 
 	Object
 		.keys(classesList)

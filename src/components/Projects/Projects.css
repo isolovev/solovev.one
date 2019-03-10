@@ -44,3 +44,7 @@
 			flex: 1 1 auto;
 			text-align: center;
 		}
+
+	.projects__list {
+		display: block;
+	}
