@@ -2,12 +2,15 @@ import Draft, { DraftItem } from "../Draft/Draft";
 import { getElement } from "../../utils/getElements";
 import request from "../../utils/request";
 import { getTransitionTime } from "../../utils/getTransitionTime";
+import lazyImages from "../../utils/lazyImages";
 
 class Projects {
 	private root = getElement(".projects");
 	private list = getElement(".projects__list");
 
 	private timeTransition = getTransitionTime(this.root);
+
+	private draftObserver = new IntersectionObserver(lazyImages);
 
 	constructor() {
 		request(`/project-list`)
@@ -35,7 +38,9 @@ class Projects {
 
 	private createList = (items: DraftItem[]): void => {
 		items.forEach((item: DraftItem) => {
-			this.list.appendChild(Draft.render(item));
+			const {fragment, root} = Draft.render(item);
+			this.draftObserver.observe(root);
+			this.list.appendChild(fragment);
 		});
 	}
 }

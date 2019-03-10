@@ -15,18 +15,24 @@ export interface DraftItem {
 	date: string;
 }
 
+interface DraftReturn {
+	fragment: Node;
+	root: HTMLElement;
+}
+
 const template = (getElement("#project-item") as HTMLTemplateElement).content;
 
 class Draft {
-	public static render(item: DraftItem): Node {
+	public static render(item: DraftItem): DraftReturn {
 		const fragment = document.importNode(Draft.template, true);
-		const images = getElement(".draft__screens", fragment);
+		const root = getElement(".draft", fragment);
+		const images = getElement(".draft__screens", root);
 
-		getElement(".draft__title", fragment).innerText = item.title;
-		getElement(".draft__text", fragment).innerText = item.text;
+		getElement(".draft__title", root).innerText = item.title;
+		getElement(".draft__text", root).innerText = item.text;
 
 		if (item.url) {
-			const more = getElement(".draft__link", fragment);
+			const more = getElement(".draft__link", root);
 			const link = getElement("a", more) as HTMLLinkElement;
 
 			more.hidden = false;
@@ -57,7 +63,7 @@ class Draft {
 			images.classList.add("draft__screens--offset");
 		}
 
-		return fragment;
+		return {fragment, root};
 	}
 
 	private static template = template;

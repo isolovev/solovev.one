@@ -1,4 +1,5 @@
 import { getElement } from "../../utils/getElements";
+import { webPSupport } from "../../utils/webPSupport";
 
 const template = (getElement("#draft-image") as HTMLTemplateElement).content;
 
@@ -34,7 +35,9 @@ class DraftImage {
 				break;
 		}
 
-		image.setAttribute("src", data.source);
+		webPSupport()
+			.then(() => image.setAttribute("data-src", data.sourceWebP))
+			.catch(() => image.setAttribute("data-src", data.source));
 
 		return fragment;
 	}
