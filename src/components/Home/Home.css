@@ -18,7 +18,10 @@
 		max-width: 600px;
 		box-sizing: border-box;
 		background: #fff;
-		padding: var(--base-line-height) calc(var(--base-line-height) * 2);
+		padding-top: calc(var(--wrap-top) + 25px);
+		padding-right: calc(var(--wrap-left) + 25px);
+		padding-bottom: calc(var(--wrap-bottom) + 25px);
+		padding-left: calc(var(--wrap-right) + 25px);
 		margin: 0 auto;
 	}
 
