@@ -1,4 +1,6 @@
 // @ts-ignore
+import "intersection-observer";
+// @ts-ignore
 import route from "riot-route";
 
 import Home from "./components/Home/Home";
