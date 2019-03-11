@@ -9,10 +9,7 @@
 	opacity: 0;
 	visibility: hidden;
 	box-sizing: border-box;
-	padding-top: calc(var(--wrap-top) + 25px);
-	padding-right: calc(var(--wrap-left) + 25px);
-	padding-bottom: calc(var(--wrap-bottom) + 25px);
-	padding-left: calc(var(--wrap-right) + 25px);
+	padding: 25px;
 	background: #fff;
 }
 
