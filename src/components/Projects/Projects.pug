@@ -1,7 +1,7 @@
 include ../IconBack/IconBack
 
-mixin Projects
-	section.projects(hidden)
+mixin Projects(hide)
+	section.projects(hidden=!hide class=(hide ? "projects--show" : ""))
 		.projects__heading
 			a.projects__back(href="/" aria-hidden="Вернуться на главную страницу")
 				+IconBack

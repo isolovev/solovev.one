@@ -3,13 +3,13 @@ include ../../components/Projects/Projects
 include ../../components/Draft/Draft
 include ../../components/DraftImage/DraftImage
 
-mixin body
+mixin body(isHome)
 	body
 		main#a
 			block
 
-			+Home
-			+Projects
+			+Home(isHome)
+			+Projects(!isHome)
 
 		+Draft
 		+DraftImage

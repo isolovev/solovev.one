@@ -2,8 +2,8 @@ include ../Photo/Photo
 include ../More/More
 include ../ExternalLink/ExternalLink
 
-mixin Home
-	.home
+mixin Home(hide)
+	.home(hidden=!hide class=(hide ? "" : "home--hide"))
 		.home__content
 			+Photo
 
