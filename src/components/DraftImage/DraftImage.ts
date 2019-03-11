@@ -34,7 +34,7 @@ class DraftImage {
 				break;
 		}
 
-		image.setAttribute("data-src-webp", data.sourceWebP);
+		image.setAttribute("data-src-webp", data.sourceWebP ? data.sourceWebP : data.source);
 		image.setAttribute("data-src", data.source);
 
 		return fragment;
