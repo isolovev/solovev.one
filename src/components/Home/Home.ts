@@ -5,6 +5,7 @@ class Home {
 
 	public show = () => {
 		this.root.classList.remove("home--hide");
+		this.root.hidden = false;
 	}
 
 	public hide(): void {
