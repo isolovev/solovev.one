@@ -15,6 +15,7 @@
     "css-mqpacker": "^7.0.0",
     "npm-run-all": "^4.1.5",
     "parcel-bundler": "^1.11.0",
+    "parcel-plugin-compress": "^1.0.7",
     "postcss": "^7.0.14",
     "postcss-custom-properties": "^8.0.9",
     "postcss-flexbugs-fixes": "^4.1.0",
@@ -46,5 +47,26 @@
       "postcss-flexbugs-fixes": {},
       "autoprefixer": {}
     }
-  }
+  },
+	"compress": {
+		"test": ".",
+		"gzip": {
+			"enabled": true,
+			"numiterations": 15,
+			"blocksplitting": true,
+			"blocksplittinglast": false,
+			"blocksplittingmax": 15
+		},
+		"brotli": {
+			"enabled": true,
+			"mode": 0,
+			"quality": 11,
+			"lgwin": 22,
+			"lgblock": 0,
+			"enable_dictionary": true,
+			"enable_transforms": false,
+			"greedy_block_split": false,
+			"enable_context_modeling": false
+		}
+	}
 }
