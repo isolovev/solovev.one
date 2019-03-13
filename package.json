@@ -1,7 +1,7 @@
 {
   "name": "solovev.one",
   "description": "My portfolio",
-  "version": "0.0.2",
+  "version": "1.0.1",
   "scripts": {
     "start": "parcel serve src/pages/index.pug",
     "build": "NODE_ENV=production node ./build.js"
