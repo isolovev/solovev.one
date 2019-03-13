@@ -15,7 +15,7 @@ route("/", () => {
 		.then(home.show);
 });
 
-route("projects/", () => {
+route("projects", () => {
 	home.hide();
 	projects.show();
 });

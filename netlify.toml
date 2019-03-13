@@ -4,12 +4,6 @@
   status = 301
   force = true
 
-[[redirects]]
-	from = "/projects.html"
-	to = "/projects/"
-	status = 200
-	force = true
-
 [[headers]]
   for = "/*"
   [headers.values]
