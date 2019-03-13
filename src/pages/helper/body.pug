@@ -1,0 +1,17 @@
+include ../../components/Home/Home
+include ../../components/Projects/Projects
+include ../../components/Draft/Draft
+include ../../components/DraftImage/DraftImage
+
+mixin body(isHome)
+	body
+		main
+			block
+
+			+Home(isHome)
+			+Projects(!isHome)
+
+		+Draft
+		+DraftImage
+
+		script(src="../index.ts")
