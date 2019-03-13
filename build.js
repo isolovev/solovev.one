@@ -5,7 +5,6 @@ const {promisify} = require('util');
 const readFile = promisify(fs.readFile);
 const writeFile = promisify(fs.writeFile);
 const unlink = promisify(fs.unlink);
-const mkdir = promisify(fs.mkdir);
 
 const Parcel = require("parcel-bundler");
 
@@ -15,7 +14,6 @@ const postcssCustomProperties = require('postcss-custom-properties');
 const PostCSS = require('postcss');
 
 const templatePath = path.join(__dirname, "src", "pages");
-const distPath = path.join(__dirname, "dist");
 
 const options = {
 	alphabet: 'abcefghijklmnopqrstuvwxyz',
@@ -40,8 +38,6 @@ function generateCssClassName() {
 
 	return res;
 }
-
-const separatePages = ["projects"];
 
 const mainBundler = new Parcel(
 	[
@@ -89,15 +85,14 @@ async function build() {
 		});
 	}
 
-	PostCSS([
+	const styles = await PostCSS([
 		postcssCustomProperties({
 			preserve: false,
 		}),
 		cssPlugin,
 		MQPacker
 	])
-		.process(cssData, { from: cssFile.name })
-		.then(({css}) => writeFile(cssFile.name, css));
+		.process(cssData, { from: cssFile.name });
 
 	Object
 		.keys(classesList)
@@ -126,33 +121,19 @@ async function build() {
 					.join(' ')
 			}
 		}));
+
+		tree.match({ tag: 'link', attrs: { rel: 'stylesheet' } }, () => {
+			return { tag: 'style', content: styles.css }
+		});
 	}
 
 	assets
 		.filter(i => i.type === "html")
 		.forEach(async item => {
 			const html = await readFile(item.name);
-			const fileName = path
-				.basename(item.name)
-				.split(".")
-				.slice(0, -1)
-				.join(".");
-
-			let filePath = item.name;
-
-			if (separatePages.includes(fileName)) {
-				await unlink(filePath);
-
-				const fileDirPath = path.join(distPath, fileName);
-				if (!fs.existsSync(fileDirPath)) {
-					await mkdir(fileDirPath);
-				}
-
-				filePath = path.join(fileDirPath, "index.html");
-			}
 
 			await writeFile(
-				filePath,
+				item.name,
 				PostHTML()
 					.use(htmlPlugin)
 					.process(html, { sync: true })
