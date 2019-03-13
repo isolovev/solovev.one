@@ -97,7 +97,9 @@ async function build() {
 	Object
 		.keys(classesList)
 		.forEach((origin) => {
-			jsData = jsData.replace(origin, classesList[origin]);
+			jsData = jsData
+				.replace(new RegExp(`"\\.${origin}"`, "g"), `".${classesList[origin]}"`)
+				.replace(new RegExp(`\(classList.\\w+\\(\("\.*",\\s\)*)\(["']${origin}["']\)`, "g"), `$1"${classesList[origin]}"`);
 		});
 
 	await writeFile(jsFile.name, jsData);
@@ -110,14 +112,7 @@ async function build() {
 				...i.attrs,
 				class: i.attrs.class
 					.split(' ')
-					.map((kls) => {
-						if (!classesList[kls] && !/^js-/.test(kls)) {
-							process.stderr.write(`Unused class .${ kls }\n`);
-							process.exit(1);
-						}
-
-						return classesList[kls];
-					})
+					.map((kls) => classesList[kls])
 					.join(' ')
 			}
 		}));
