@@ -10,6 +10,7 @@ const home = new Home();
 const projects = new Projects();
 
 route("/", () => {
+	home.init();
 	projects
 		.hide()
 		.then(home.show);

@@ -3,9 +3,12 @@ import { getElement } from "../../utils/getElements";
 class Home {
 	private root = getElement(".home");
 
+	public init(): void {
+		this.root.hidden = false;
+	}
+
 	public show = () => {
 		this.root.classList.remove("home--hide");
-		this.root.hidden = false;
 	}
 
 	public hide(): void {
