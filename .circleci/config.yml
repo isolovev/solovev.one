@@ -8,7 +8,6 @@ jobs:
       - add_ssh_keys:
           fingerprints:
             - "5a:31:ac:9c:77:9a:33:22:8d:68:e2:75:1d:66:56:cf	"
-      - checkout
       - run:
           name: Install dependencies
           command: npm i
