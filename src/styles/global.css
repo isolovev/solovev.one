@@ -96,6 +96,11 @@ a:not([class]) {
 		opacity: 1;
 	}
 
+svg {
+	fill: currentColor;
+	display: block;
+}
+
 #a {
 	padding-top: var(--wrap-top, 0px);
 	padding-right: var(--wrap-right, 0px);

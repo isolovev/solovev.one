@@ -1,10 +1,9 @@
-include ../IconBack/IconBack
-
 mixin Projects(hide)
 	section.projects(hidden=!hide class=(hide ? "projects--show" : ""))
 		.projects__heading
 			a.projects__back(href="/" aria-hidden="Вернуться на главную страницу")
-				+IconBack
+				svg(xmlns="http://www.w3.org/2000/svg" width="11" height="20" viewBox="0 0 62.2 116" role="none")
+					path(d="M55.2 114.8a4.1 4.1 0 0 0 5.8 0 4.1 4.1 0 0 0 0-5.8L10 58 61 7a4.1 4.1 0 1 0-5.8-5.8l-54 53.9a4.1 4.1 0 0 0 0 5.8z")
 			h1.projects__title Последние работы
 
 		.projects__list
