@@ -5,14 +5,9 @@ export interface DraftItem {
 	title: string;
 	text: string;
 	url: string;
-	logo: string|null;
-	logo_webp: string|null;
-	desktop: string|null;
-	desktop_webp: string|null;
-	mobile: string|null;
-	mobile_webp: string|null;
+	desktop: [string, string];
+	mobile: [string, string];
 	type: string;
-	date: string;
 }
 
 interface DraftReturn {
@@ -39,27 +34,27 @@ class Draft {
 			link.href = item.url;
 		}
 
-		if (item.desktop) {
+		if (item.desktop[0]) {
 			const image = DraftImage.render({
 				type: DraftImageItemType.desktop,
-				source: item.desktop,
-				sourceWebP: item.desktop_webp,
+				source: item.desktop[0],
+				sourceWebP: item.desktop[1],
 			});
 
 			images.appendChild(image);
 		}
 
-		if (item.mobile) {
+		if (item.mobile[0]) {
 			const image = DraftImage.render({
-				type: item.desktop ? DraftImageItemType.mobile : DraftImageItemType.mobile_only,
-				source: item.mobile,
-				sourceWebP: item.mobile_webp,
+				type: item.desktop[0] ? DraftImageItemType.mobile : DraftImageItemType.mobile_only,
+				source: item.mobile[0],
+				sourceWebP: item.mobile[1],
 			});
 
 			images.appendChild(image);
 		}
 
-		if (item.mobile && item.desktop) {
+		if (item.mobile[0] && item.desktop[0]) {
 			images.classList.add("draft__screens--offset");
 		}
 
