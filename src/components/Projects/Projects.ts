@@ -1,6 +1,5 @@
 import Draft, { DraftItem } from "../Draft/Draft";
 import { getElement } from "../../utils/getElements";
-import request from "../../utils/request";
 import { getTransitionTime } from "../../utils/getTransitionTime";
 import lazyImages from "../../utils/lazyImages";
 
@@ -13,8 +12,16 @@ class Projects {
 	private draftObserver = new IntersectionObserver(lazyImages);
 
 	constructor() {
-		request(`/project-list`)
-			.then(this.createList);
+		const request = new XMLHttpRequest();
+
+		request.onload = () => {
+			if (request.status >= 200 && request.status < 300) {
+				this.createList(JSON.parse(request.response));
+			}
+		};
+
+		request.open("GET", "https://solovev.one/api/project-list/", true);
+		request.send();
 	}
 
 	public show(): void {
