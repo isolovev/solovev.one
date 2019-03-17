@@ -42,29 +42,7 @@ const compressConfig = {
 	}
 };
 
-const options = {
-	alphabet: "abcefghijklmnopqrstuvwxyz",
-	length: 1,
-	index: 0
-};
-
-function generateCssClassName() {
-	let res = "";
-
-	for (let i = options.length - 1; i >= 0; i--) {
-		const x = Math.pow(options.alphabet.length, i);
-		const n = Math.floor(options.index / x);
-		res += options.alphabet[n % options.alphabet.length];
-	}
-
-	options.index++;
-	if (options.index > Math.pow(options.alphabet.length, options.length) - 1) {
-		options.length++;
-		options.index = 0;
-	}
-
-	return res;
-}
+const shortCssClassName = generateCssClassName();
 
 const mainBundler = new Parcel(
 	[
@@ -95,19 +73,17 @@ async function build() {
 	]);
 
 	const classesList = {};
-	let lastUsed = -1;
 
 	function cssPlugin(root) {
 		root.walkRules(rule => {
 			rule.selector = rule.selector.replace(/\.[\w_-]+/g, str => {
-				const kls = str.substr(1);
+				const origin = str.substr(1);
 
-				if (!classesList[kls] && !/^js-/.test(kls)) {
-					lastUsed += 1;
-					classesList[kls] = generateCssClassName();
+				if (!classesList[origin]) {
+					classesList[origin] = shortCssClassName.next().value;
 				}
 
-				return "." + classesList[kls]
+				return `.${classesList[origin]}`;
 			});
 		});
 	}
@@ -124,9 +100,13 @@ async function build() {
 	Object
 		.keys(classesList)
 		.forEach((origin) => {
-			jsData = jsData
-				.replace(new RegExp(`"\\.${origin}"`, "g"), `".${classesList[origin]}"`)
-				.replace(new RegExp(`\(classList.\\w+\\(\("\.*",\\s\)*)\(["']${origin}["']\)`, "g"), `$1"${classesList[origin]}"`);
+			const startSelector = `["'.]`;
+			const endSelector = `["'\\s\\[):,+~>]`;
+
+			jsData = jsData.replace(
+				new RegExp(`(${startSelector})${origin}(${endSelector})`, "g"),
+				`$1${classesList[origin]}$2`
+			);
 		});
 
 	await writeFile(jsFile.name, jsData);
@@ -274,4 +254,40 @@ function brotliCompress(file, config) {
 			}
 		});
 	});
+}
+
+function* generateCssClassName() {
+	const options = {
+		alphabet: "abcefghijklmnopqrstuvwxyz0123456789-_",
+		length: 1,
+		index: 0
+	};
+
+	const getClassName = () => {
+		let result = "";
+
+		for (let i = options.length - 1; i >= 0; i--) {
+			const x = Math.pow(options.alphabet.length, i);
+			const n = Math.floor(options.index / x);
+			result += options.alphabet[n % options.alphabet.length];
+		}
+
+		options.index++;
+		if (options.index > Math.pow(options.alphabet.length, options.length) - 1) {
+			options.length++;
+			options.index = 0;
+		}
+
+		return result;
+	};
+
+	while (true) {
+		let result = getClassName();
+
+		while (/^[0-9-].*$/.test(result)) {
+			result = getClassName();
+		}
+
+		yield result;
+	}
 }
