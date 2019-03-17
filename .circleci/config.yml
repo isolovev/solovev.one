@@ -19,14 +19,8 @@ jobs:
           name: Build project
           command: npm run build
       - run:
-          name: Git config user.email
-          command: git config user.email "ivan@solovev.one"
-      - run:
-          name: Git config user.name
-          command: git config user.name "Ivan Solovev"
-      - run:
-          name: Deploy project to gh-pages branch
-          command: ./node_modules/.bin/gh-pages --dotfiles --message "[ci skip] Updates" --dist dist
+          name: Deploy project
+          command: rsync -avzhe "$SSH_PARAMS" ./dist/ $USER@$HOST:$PATH
 
 workflows:
   version: 2
