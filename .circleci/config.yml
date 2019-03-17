@@ -5,21 +5,10 @@ jobs:
     docker:
       - image: circleci/node:latest
     steps:
-      - add_ssh_keys:
-          fingerprints:
-            - "5a:31:ac:9c:77:9a:33:22:8d:68:e2:75:1d:66:56:cf	"
-      - run:
-          name: Install dependencies
-          command: npm i
-      - run:
-          name: Install gh-pages
-          command: npm install gh-pages@2.0.1
-      - run:
-          name: Build project
-          command: npm run build
-      - run:
-          name: Deploy project
-          command: rsync -avzhe "$SSH_PARAMS" ./dist/ $USER@$HOST:$PATH
+			- checkout
+      - run: yarn install
+      - run: yarn run build
+      - run: rsync -avzhe "ssh ${DEPLOY_SSH_PARAMS}" ./dist/ $DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_PATH
 
 workflows:
   version: 2
