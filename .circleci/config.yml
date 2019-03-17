@@ -8,7 +8,9 @@ jobs:
       - checkout
       - run: yarn install
       - run: yarn run build
-      - run: rsync -avzhe "ssh ${DEPLOY_SSH_PARAMS}" ./dist/ $DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_PATH
+      - deploy:
+          name: Deploy
+          command: rsync -avzhe "ssh ${DEPLOY_SSH_PARAMS}" ./dist/ $DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_PATH
 
 workflows:
   version: 2
