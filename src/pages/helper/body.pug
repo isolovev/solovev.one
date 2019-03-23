@@ -2,14 +2,35 @@ include ../../components/Home/Home
 include ../../components/Projects/Projects
 include ../../components/Draft/Draft
 include ../../components/DraftImage/DraftImage
+include ../../components/Error/Error
 
-mixin body(isHome)
+mixin body(type)
+	-
+		var isHome = false;
+		var isProjects = false;
+		var isError = false;
+
+		switch (type) {
+			case "home":
+				isHome = true;
+				break;
+
+			case "projects":
+				isProjects = true;
+				break;
+
+			case "error":
+				isError = true;
+				break;
+			}
+
 	body
 		main#a
 			block
 
 			+Home(isHome)
-			+Projects(!isHome)
+			+Projects(isProjects)
+			+Error(isError)
 
 		+Draft
 		+DraftImage
