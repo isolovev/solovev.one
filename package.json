@@ -33,9 +33,10 @@
     "typescript": "^3.3.3"
   },
   "browserslist": [
-    "last 4 versions",
-    "not dead",
-    "ie >= 11"
+    "defaults",
+		"not Explorer 11",
+		"not ExplorerMobile 11",
+		"not OperaMini all"
   ],
   "postcss": {
     "plugins": {
