@@ -3,25 +3,27 @@ include ../More/More
 include ../ExternalLink/ExternalLink
 
 mixin Home(hide)
-	.home(hidden=!hide class=(hide ? "" : "home--hide"))
+	.home(hidden=!hide class=(hide ? "" : "home--hide") itemscope itemtype="http://schema.org/Person")
 		.home__content
 			+Photo
 
 			.home__header
-				h1.home__title Иван Соловьев
-				h2.home__specialty Frontend разработчик
+				h1.home__title
+					span(itemprop="name") Иван
+					span(itemprop="familyName") Соловьев
+				h2.home__specialty(itemprop="jobTitle") Frontend разработчик
 
-			.home__text
+			.home__text(itemprop="knowsAbout")
 				p Я работаю, самообучаюсь и провожу эксперименты каждый день, чтобы стать лучшим в своей деятельности.
 				p Помимо этого, для разнообразия, изучаю Go и Java. Развлекаюсь с C/C++ для программирования МК.
 				p По-моему мнению, сайты - это просто инструменты. Люди, которые их используют, и опыт, который они при этом получают, именно это имеет наибольшее значение.
 
 			.home__social
 				!= `Найти меня можно здесь: `
-				+ExternalLink("http://t.me/solovev_one") Telegram
+				+ExternalLink("http://t.me/solovev_one")(itemprop="sameAs") Telegram
 				!= `, `
-				+ExternalLink("mailto:ivan@solovev.one") ivan@solovev.one
+				+ExternalLink("mailto:ivan@solovev.one")(itemprop="email") ivan@solovev.one
 				!= `, `
-				+ExternalLink("https://github.com/isolovev") GitHub
+				+ExternalLink("https://github.com/isolovev")(itemprop="sameAs") GitHub
 
 			+More
