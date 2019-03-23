@@ -3,7 +3,7 @@ include ../More/More
 include ../ExternalLink/ExternalLink
 
 mixin Home(hide)
-	.home(hidden=!hide class=(hide ? "" : "home--hide") itemscope itemtype="http://schema.org/Person")
+	section.home(hidden=!hide class=(hide ? "" : "home--hide") itemscope itemtype="http://schema.org/Person")
 		.home__content
 			+Photo
 
