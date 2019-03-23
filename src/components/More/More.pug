@@ -1,4 +1,4 @@
-mixin More
+mixin More(text, link)
 	.more
-		a.more__link(href="/projects" itemprop="url")
-			.more__text Посмотреть мои работы
+		a.more__link(href=link itemprop="url")
+			.more__text= text
