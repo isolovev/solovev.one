@@ -33,9 +33,9 @@
   },
   "browserslist": [
     "defaults",
-		"not Explorer 11",
-		"not ExplorerMobile 11",
-		"not OperaMini all"
+    "not Explorer 11",
+    "not ExplorerMobile 11",
+    "not OperaMini all"
   ],
   "postcss": {
     "plugins": {

@@ -5406,18 +5406,6 @@ rimraf@^2.2.8, rimraf@^2.6.1, rimraf@^2.6.2:
   dependencies:
     glob "^7.1.3"
 
-riot-observable@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/riot-observable/-/riot-observable-3.0.0.tgz#8bbd2daf72a2141bb043082df4023dc504bad2eb"
-  integrity sha1-i70tr3KiFBuwQwgt9AI9xQS60us=
-
-riot-route@^3.1.4:
-  version "3.1.4"
-  resolved "https://registry.yarnpkg.com/riot-route/-/riot-route-3.1.4.tgz#96a279b5fde1acad3eea5e8bdf68031ecfe13392"
-  integrity sha512-40FXoqIxF5KBRJZ26u8Abyq/JZXWHRMOqlat9wXjNKxdbLeKbSjt4vPlR8OUTjFRtp73dTdKdZ5MzHckMmaH6Q==
-  dependencies:
-    riot-observable "^3.0.0"
-
 ripemd160@^2.0.0, ripemd160@^2.0.1:
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/ripemd160/-/ripemd160-2.0.2.tgz#a1c1a6f624751577ba5d07914cbc92850585890c"

@@ -6,7 +6,7 @@ const readDirRecursive = require("recursive-readdir");
 const zopfli = require('@gfx/zopfli');
 const brotli = require('iltorb');
 const pQueue = require('p-queue');
-const chalk = require('chalk')
+const chalk = require('chalk');
 
 const readFile = promisify(fs.readFile);
 const writeFile = promisify(fs.writeFile);
