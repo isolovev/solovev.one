@@ -2,7 +2,7 @@
   "name": "solovev.one",
   "description": "My portfolio",
   "scripts": {
-    "start": "parcel serve src/pages/index.pug",
+    "start": "parcel serve src/pages/*.pug",
     "build": "NODE_ENV=production node ./build.js",
     "lint:typescript": "tsc && tslint -p ./tsconfig.json -c ./tslint.json"
   },
