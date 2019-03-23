@@ -1,3 +1,5 @@
 mixin Photo
 	.photo
-		img.photo__image(src="../components/Photo/photo.jpg" alt="")
+		picture
+			source(srcset="../components/Photo/photo.webp" type="image/webp")
+			img.photo__image(src="../components/Photo/photo.jpg" alt="")
