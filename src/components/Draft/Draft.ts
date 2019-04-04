@@ -1,5 +1,7 @@
 import { getElement } from "../../utils/getElements";
 import DraftImage, { DraftImageItemType } from "../DraftImage/DraftImage";
+import { ProjectTypes } from "../../utils/projectTypes";
+import { getOpensourceIcon } from "../Opensource/Opensource";
 
 export interface DraftItem {
 	title: string;
@@ -7,7 +9,7 @@ export interface DraftItem {
 	url: string;
 	desktop: [string, string];
 	mobile: [string, string];
-	type: string;
+	type: ProjectTypes;
 }
 
 interface DraftReturn {
@@ -22,8 +24,13 @@ class Draft {
 		const fragment = document.importNode(Draft.template, true);
 		const root = getElement(".draft", fragment);
 		const images = getElement(".draft__screens", root);
+		let title = item.title;
 
-		getElement(".draft__title", root).innerText = item.title;
+		if (item.type !== ProjectTypes.project) {
+			title = [getOpensourceIcon(), item.title].join("");
+		}
+
+		getElement(".draft__title", root).innerHTML = title;
 		getElement(".draft__text", root).innerText = item.text;
 
 		if (item.url) {
