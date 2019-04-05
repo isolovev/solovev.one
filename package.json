@@ -4,9 +4,11 @@
 	"scripts": {
 		"start": "parcel serve src/pages/*.pug",
 		"build": "NODE_ENV=production node ./build.js",
+		"compress": "node ./compress.js",
+		"production": "yarn build && yarn compress",
 		"lint:typescript": "tsc && tslint -p ./tsconfig.json -c ./tslint.json",
 		"spell": "yaspeller dist/*.html",
-		"test": "yarn lint:typescript & yarn build && yarn spell"
+		"test": "yarn lint:typescript && yarn build && yarn spell"
 	},
 	"dependencies": {
 		"intersection-observer": "^0.5.1"
@@ -69,6 +71,11 @@
 		"*.ts": [
 			"tsc --noEmit",
 			"tslint -p ./tsconfig.json -c ./tslint.json"
+		],
+		"*.pug": [
+			"yarn build",
+			"yarn spell",
+			"git add"
 		]
 	},
 	"yaspeller": {
