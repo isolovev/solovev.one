@@ -75,6 +75,7 @@
 			top: calc(50% - 21px);
 			left: calc(50% - 17px);
 			animation: spinner 1s both infinite linear;
+			fill: var(--brand);
 		}
 
 @media (max-width: 750px) {
