@@ -15,6 +15,7 @@
 	--text-color: #222;
 
 	--brand: #d82a4a;
+	--brand-for-dark: #ff3c60;
 	--project-border: #E8E8E8;
 
 	--transition: 0.25s;
@@ -113,5 +114,24 @@ svg {
 	*::after {
 		transition: none !important;
 		animation: none !important;
+	}
+}
+
+@media (prefers-color-scheme: dark) {
+	html {
+		color: #fff;
+		background: var(--text-color);
+	}
+
+	a {
+		color: var(--brand-for-dark);
+	}
+
+		a:hover {
+			color: #fff;
+		}
+
+	a:not([class])::before {
+		color: var(--brand-for-dark);
 	}
 }

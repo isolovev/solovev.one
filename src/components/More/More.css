@@ -49,3 +49,18 @@
 			position: relative;
 			z-index: 1;
 		}
+
+@media (prefers-color-scheme: dark) {
+	.more__link:hover,
+	.more__link:focus {
+		color: #fff;
+	}
+
+	.more__link:focus {
+		box-shadow: 0 0 2px 4px var(--brand-for-dark);
+	}
+
+	.more__link::after {
+		background: var(--brand-for-dark);
+	}
+}

@@ -45,3 +45,9 @@
 	.projects__list {
 		display: block;
 	}
+
+@media (prefers-color-scheme: dark) {
+	.projects {
+		background: var(--text-color);
+	}
+}

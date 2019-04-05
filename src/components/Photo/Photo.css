@@ -26,3 +26,9 @@
 		margin: 0 auto calc(var(--base-line-height) / 2);
 	}
 }
+
+@media (prefers-color-scheme: dark) {
+	.photo {
+		background: var(--brand-for-dark);
+	}
+}

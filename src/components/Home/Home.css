@@ -80,3 +80,13 @@
 		padding: var(--base-line-height);
 	}
 }
+
+@media (prefers-color-scheme: dark) {
+	.home__content {
+		background: var(--text-color);
+	}
+
+	.home__specialty {
+		background: var(--brand-for-dark);
+	}
+}
