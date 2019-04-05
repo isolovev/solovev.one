@@ -45,6 +45,7 @@
 @media (max-width: 750px) {
 	.draft {
 		display: block;
+		margin: 0 0 calc(2 * var(--base-line-height));
 	}
 
 		.draft__info {
@@ -58,19 +59,10 @@
 		.draft__screens {
 			display: flex;
 			align-items: flex-start;
+			flex-wrap: wrap;
 		}
 
 				.draft__screens--offset {
 					padding: 0;
 				}
-}
-
-@media (max-width: 750px) {
-	.draft {
-		margin: 0 0 calc(2 * var(--base-line-height));
-	}
-
-		.draft__screens {
-			display: block;
-		}
 }

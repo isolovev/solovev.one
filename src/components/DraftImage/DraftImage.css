@@ -8,7 +8,7 @@
 
 		.draft-image--desktop {
 			padding: 0 0 56.25%;
-			margin: 15px 0 0;
+			margin: 20px 0 0;
 			max-width: 300px;
 		}
 
@@ -79,6 +79,13 @@
 		}
 
 @media (max-width: 750px) {
+	.draft-image {
+		margin-bottom: var(--base-line-height);
+		top: auto;
+		left: auto;
+		position: relative;
+	}
+
 	.draft-image--desktop {
 		max-height: 285px;
 		height: auto;
@@ -91,7 +98,6 @@
 
 	.draft-image--mobile,
 	.draft-image--only-mobile {
-		position: static;
 		padding: 0;
 		height: 300px;
 		width: 150px;
@@ -114,7 +120,6 @@
 	}
 
 	.draft-image--mobile {
-		margin: var(--base-line-height) 0 0;
 		max-height: 250px;
 		height: auto;
 		max-width: 200px;
