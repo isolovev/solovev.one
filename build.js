@@ -10,6 +10,7 @@ const chalk = require('chalk');
 
 const readFile = promisify(fs.readFile);
 const writeFile = promisify(fs.writeFile);
+const copyFile = promisify(fs.copyFile);
 const unlink = promisify(fs.unlink);
 
 const Parcel = require("parcel-bundler");
@@ -115,6 +116,7 @@ async function build() {
 	});
 
 	await writeFile(jsFile.name, minifyJS.code);
+	await copyFile("./src/favicon.ico", "./dist/favicon.ico");
 
 	function htmlPlugin(tree) {
 		tree.match({ attrs: { class: true } }, i => ({
