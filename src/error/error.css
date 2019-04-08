@@ -1,0 +1,33 @@
+.error {
+	background: #fff;
+	display: flex;
+	height: 100vh;
+	padding-top: var(--wrap-top, 0px);
+	padding-right: var(--wrap-right, 0px);
+	padding-bottom: var(--wrap-bottom, 0px);
+	padding-left: var(--wrap-left, 0px);
+}
+
+	.error__wrap {
+		margin: auto;
+		width: 100%;
+		box-sizing: border-box;
+		padding: 0 15px;
+		max-width: 500px;
+		text-align: center;
+	}
+
+		.error__title {
+			font-size: 130px;
+			font-weight: 600;
+			line-height: 1;
+		}
+
+			.error__title span {
+				transform: scaleX(-1);
+				display: inline-block;
+			}
+
+		.error__text {
+			font-size: 18px;
+		}

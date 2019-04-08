@@ -100,14 +100,6 @@ svg {
 	display: block;
 }
 
-#a {
-	padding-top: var(--wrap-top, 0px);
-	padding-right: var(--wrap-right, 0px);
-	padding-bottom: var(--wrap-bottom, 0px);
-	padding-left: var(--wrap-left, 0px);
-	box-sizing: border-box;
-}
-
 @media (prefers-reduced-motion: reduce) {
 	*,
 	*::before,

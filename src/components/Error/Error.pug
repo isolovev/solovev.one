@@ -1,8 +1,0 @@
-include ../More/More
-
-mixin Error(show)
-	section.error(hidden=!show class=(show ? "error--show" : ""))
-		.error__wrap
-			.error__title 40#[span 4]
-			h1.error__text Такой страницы не существует
-			+More("На главную", "/")

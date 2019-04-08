@@ -13,9 +13,8 @@ const PostHTML = require("posthtml");
 const MQPacker = require("css-mqpacker");
 const postcssCustomProperties = require("postcss-custom-properties");
 const PostCSS = require("postcss");
-const Terser = require("terser");
 
-const templatePath = path.join(__dirname, "src", "pages");
+const templatePath = path.join(__dirname, "src");
 
 const shortCssClassName = generateCssClassName();
 
@@ -23,7 +22,6 @@ const mainBundler = new Parcel(
 	[
 		path.join(templatePath, "index.pug"),
 		path.join(templatePath, "404.pug"),
-		path.join(templatePath, "projects.pug"),
 	],
 	{
 		sourceMaps: false,
@@ -35,17 +33,6 @@ async function build() {
 	// noinspection JSUnresolvedFunction
 	const bundlePages = await mainBundler.bundle();
 	const assets = findAssets(bundlePages);
-
-	const cssFile = assets.find((item) => item.type === "css");
-	const jsFile = assets.find((item) => item.type === "js");
-
-	let cssData = (await readFile(cssFile.name)).toString();
-	let jsData = (await readFile(jsFile.name)).toString();
-
-	await Promise.all([
-		unlink(cssFile.name),
-		unlink(jsFile.name),
-	]);
 
 	const classesList = {};
 
@@ -63,33 +50,19 @@ async function build() {
 		});
 	}
 
-	const styles = await PostCSS([
-		postcssCustomProperties({
-			preserve: false,
-		}),
-		cssPlugin,
-		MQPacker
-	])
-		.process(cssData, { from: cssFile.name });
+	const cssFiles = assets.filter((item) => item.type === "css");
+	await Promise.all(cssFiles.map(async (cssFile) => {
+		const cssData = (await readFile(cssFile.name)).toString();
 
-	Object
-		.keys(classesList)
-		.forEach((origin) => {
-			jsData = jsData
-				.replace(new RegExp(`"\\.${origin}"`, "g"), `".${classesList[origin]}"`)
-				.replace(new RegExp(`\(classList.\\w+\\(\("\.*",\\s\)*)\(["']${origin}["']\)`, "g"), `$1"${classesList[origin]}"`);
-		});
+		const styles = await PostCSS([
+			postcssCustomProperties({ preserve: false }),
+			cssPlugin,
+			MQPacker
+		])
+			.process(cssData, { from: cssFile.name });
 
-	jsData = jsData
-		.replace(/parcelRequire=function.*\(function \(require\) {/i, "(function(window,document){")
-		.replace(/}\);$/, "})(window,document);");
-
-	const minifyJS = Terser.minify(jsData, {
-		toplevel: true
-	});
-
-	await writeFile(jsFile.name, minifyJS.code);
-	await copyFile("./src/favicon.ico", "./dist/favicon.ico");
+		cssFile.css = styles.css;
+	}));
 
 	function htmlPlugin(tree) {
 		tree.match({ attrs: { class: true } }, i => ({
@@ -104,10 +77,12 @@ async function build() {
 			}
 		}));
 
-		tree.match({ tag: "link", attrs: { rel: "stylesheet" } }, () => {
+		tree.match({ tag: "link", attrs: { rel: "stylesheet" } }, (link) => {
+			const cssFile = cssFiles.find((item) => item.name.indexOf(link.attrs.href) >= 0);
+
 			return {
 				tag: "style",
-				content: styles.css
+				content: cssFile.css
 			}
 		});
 	}
@@ -125,6 +100,9 @@ async function build() {
 					.html
 			);
 		});
+
+	await copyFile("./src/icons/favicon.ico", "./dist/favicon.ico");
+	await Promise.all(cssFiles.map((cssFile) => unlink(cssFile.name)));
 }
 
 build()

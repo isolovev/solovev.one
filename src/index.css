@@ -1,12 +1,3 @@
 @import url("./styles/global.css");
-@import url("./components/Home/Home.css");
-@import url("./components/Photo/Photo.css");
-@import url("./components/More/More.css");
-
-@import url("./components/Projects/Projects.css");
-@import url("./components/Draft/Draft.css");
-@import url("./components/DraftImage/DraftImage.css");
-
-@import url("./components/Error/Error.css");
-
-@import url("./components/Opensource/Opensource.css");
+@import url("./home/home.css");
+@import url("./photo/photo.css");
