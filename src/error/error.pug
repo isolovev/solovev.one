@@ -4,5 +4,5 @@ mixin error
 	main.error
 		.error__wrap
 			.error__title 40#[span 4]
-			h1.error__text Такой страницы не существует
-			+more("На главную", "/")
+			h1.error__text= not_found
+			+more(go_home, "/")

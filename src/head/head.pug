@@ -1,5 +1,3 @@
-- var siteName = "Иван Соловьев – Frontend разработчик";
-
 mixin head(cssFile, title)
 	head
 		meta(charset="UTF-8")
@@ -7,8 +5,8 @@ mixin head(cssFile, title)
 		meta(http-equiv="x-ua-compatible" content="ie=edge")
 
 		link(rel="stylesheet" href=`./${cssFile}.css`)
-		title= title ? `${title}. ${siteName}` : siteName
-		meta(name="description" content="Фронтенд разработчик умеюший сделать хорошо")
+		title= title ? `${title}. ${site_name}` : site_name
+		meta(name="description" content=description)
 
 		link(rel="mask-icon" href="icons/logo.svg" color="#d82a4a")
 		link(rel="icon" type="image/png" sizes="192x192" href="icons/192.png")

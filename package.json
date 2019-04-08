@@ -5,7 +5,7 @@
 		"start": "parcel serve src/index.pug",
 		"start:pages": "parcel serve src/*.pug",
 		"build": "NODE_ENV=production node ./build.js",
-		"spell": "yaspeller src/*.json"
+		"spell": "yaspeller src/data.json"
 	},
 	"devDependencies": {
 		"autoprefixer": "^9.4.7",
@@ -54,7 +54,7 @@
 		}
 	},
 	"lint-staged": {
-		"src/*.json": [
+		"src/data.json": [
 			"yarn spell",
 			"git add"
 		]
@@ -62,9 +62,14 @@
 	"yaspeller": {
 		"ignoreCapitalization": true,
 		"dictionary": [
-			"Frontend",
+			"frontend",
+			"фронтенд",
 			"GitHub",
-			"solovev"
+			"github",
+			"solovev",
+			"isolovev",
+			"sameAs",
+			"mailto"
 		]
 	}
 }

@@ -8,19 +8,18 @@ mixin home()
 
 			.home__header
 				h1.home__title
-					span(itemprop="name") Иван
-					span(itemprop="familyName") Соловьев
-				h2.home__specialty(itemprop="jobTitle") Frontend разработчик
+					span(itemprop="name")= name
+					=" "
+					span(itemprop="familyName")= last_name
+				h2.home__specialty(itemprop="jobTitle")= specialty
 
 			.home__text(itemprop="knowsAbout")
-				p Я работаю, самообучаюсь и провожу эксперименты каждый день, чтобы стать лучшим в своей деятельности.
-				p Помимо этого, для разнообразия, изучаю Go и Java. Развлекаюсь с C/C++ для программирования МК.
-				p По-моему мнению, сайты - это просто инструменты. Люди, которые их используют, и опыт, который они при этом получают, именно это имеет наибольшее значение.
+				each text in about
+					p= text
 
 			.home__social
-				!= `Найти меня можно здесь: `
-				+external-link("http://t.me/solovev_one")(itemprop="sameAs") Telegram
-				!= `, `
-				+external-link("mailto:ivan@solovev.one")(itemprop="email") ivan@solovev.one
-				!= `, `
-				+external-link("https://github.com/isolovev")(itemprop="sameAs") GitHub
+				!= find_me
+				each contact, index in contacts
+					if index > 0
+						!= ", "
+					+external-link(contact.link)(itemprop=contact.type)= contact.name
