@@ -69,7 +69,16 @@
 			"solovev",
 			"isolovev",
 			"sameAs",
-			"mailto"
+			"mailto",
+			"Evr",
+			"ne",
+			"evrone",
+			"ru",
+			"reactjs",
+			"фрилансером"
 		]
+	},
+	"dependencies": {
+		"section": "^0.4.2"
 	}
 }

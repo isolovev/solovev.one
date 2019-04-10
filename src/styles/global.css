@@ -11,6 +11,7 @@
 
 	--line-height: 1.625;
 	--base-line-height: 26px;
+	--section-bottom-offset: calc(1 * var(--base-line-height));
 
 	--text-color: #222;
 

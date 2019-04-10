@@ -1,0 +1,7 @@
+include ../section/section
+
+mixin about
+	+section(about.title).about
+		.about__text(itemprop="knowsAbout")
+			each text in about.text
+				p= text

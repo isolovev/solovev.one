@@ -1,0 +1,9 @@
+include ../section/section
+
+mixin contacts
+	+section(contacts.title).contacts
+		div
+			each contact, index in contacts.list
+				if index > 0
+					!= ", "
+				+external-link(contact.link)(itemprop=contact.type)= contact.name

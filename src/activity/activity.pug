@@ -1,0 +1,9 @@
+include ../section/section
+include ../external-link/external-link
+
+mixin activity
+	+section(activity.title).activity
+		ul.activity__list
+			each item in activity.list
+				li.activity__item
+					!= item.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" rel="noopener noreferrer" target="_blank">$1</a>')

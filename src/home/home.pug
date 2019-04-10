@@ -1,4 +1,7 @@
 include ../photo/photo
+include ../contacts/contacts
+include ../activity/activity
+include ../about/about
 include ../external-link/external-link
 
 mixin home()
@@ -13,13 +16,6 @@ mixin home()
 					span(itemprop="familyName")= last_name
 				h2.home__specialty(itemprop="jobTitle")= specialty
 
-			.home__text(itemprop="knowsAbout")
-				each text in about
-					p= text
-
-			.home__social
-				!= find_me
-				each contact, index in contacts
-					if index > 0
-						!= ", "
-					+external-link(contact.link)(itemprop=contact.type)= contact.name
+			+contacts
+			+activity
+			+about
