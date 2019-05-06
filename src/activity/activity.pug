@@ -1,9 +1,17 @@
 include ../section/section
 include ../external-link/external-link
 
+- function md2text (text) {
+-		return text.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" rel="noopener noreferrer" target="_blank">$1</a>')
+-	}
+
 mixin activity
 	+section(activity.title).activity
 		ul.activity__list
 			each item in activity.list
 				li.activity__item
-					!= item.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" rel="noopener noreferrer" target="_blank">$1</a>')
+					if (typeof item === 'string')
+						!= md2text(item)
+					else
+						!= md2text(item.name)
+						.activity__description!= md2text(item.description)
