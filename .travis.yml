@@ -12,6 +12,7 @@ before_script:
 script:
   - npm run build
   - echo "solovev.one" > dist/CNAME
+  - cp -r static dist/static
 deploy:
   provider: pages
   skip_cleanup: true
