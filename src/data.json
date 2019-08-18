@@ -41,13 +41,7 @@
 		"title": "Активность",
 		"list": [
 			"Работаю в [Evr<span style='color:red'>o</span>ne](https://evrone.com)",
-			{
-				"name": "Исправил Custom Properties в [PostCSS](https://github.com/postcss/postcss)",
-				"description": "Изменение ломает [postcss-apply](https://github.com/pascalduez/postcss-apply/), поэтому откатили исправление и вернём в 8.0.0"
-			},
-			"Добавил опцию в [Size Limit](https://github.com/ai/size-limit)",
-			"Поправил русскую документацию сайта [React](https://ru.reactjs.org/)",
-			"Перезапустил сайт «[Easings.net](https://easings.net/)»",
+			"Иногда ломаю [опенсорс](https://github.com/isolovev)",
 			"Долгое время был фрилансером"
 		]
 	},

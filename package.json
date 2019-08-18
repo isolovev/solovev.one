@@ -62,6 +62,7 @@
 	"yaspeller": {
 		"ignoreCapitalization": true,
 		"dictionary": [
+			"опенсорс",
 			"frontend",
 			"фронтенд",
 			"GitHub",
