@@ -10,8 +10,6 @@
 	"devDependencies": {
 		"autoprefixer": "^9.8.0",
 		"css-mqpacker": "^7.0.0",
-		"husky": "^4.2.5",
-		"lint-staged": "^10.2.2",
 		"parcel-bundler": "^1.12.4",
 		"postcss": "^7.0.30",
 		"postcss-custom-properties": "^9.1.1",
@@ -47,17 +45,6 @@
 			"autoprefixer": {}
 		}
 	},
-	"husky": {
-		"hooks": {
-			"pre-commit": "lint-staged"
-		}
-	},
-	"lint-staged": {
-		"src/data.json": [
-			"yarn spell",
-			"git add"
-		]
-	},
 	"yaspeller": {
 		"ignoreCapitalization": true,
 		"dictionary": [
@@ -75,8 +62,5 @@
 			"evrone",
 			"фрилансером"
 		]
-	},
-	"dependencies": {
-		"section": "^0.4.2"
 	}
 }
