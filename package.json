@@ -8,20 +8,20 @@
 		"spell": "yaspeller src/data.json"
 	},
 	"devDependencies": {
-		"autoprefixer": "^9.6.1",
+		"autoprefixer": "^9.8.0",
 		"css-mqpacker": "^7.0.0",
-		"husky": "^3.0.4",
-		"lint-staged": "^9.2.3",
+		"husky": "^4.2.5",
+		"lint-staged": "^10.2.2",
 		"npm-run-all": "^4.1.5",
-		"parcel-bundler": "^1.12.3",
-		"postcss": "^7.0.17",
-		"postcss-custom-properties": "^9.0.2",
-		"postcss-flexbugs-fixes": "^4.1.0",
-		"postcss-font-family-system-ui": "^4.1.1",
-		"postcss-pxtorem": "^4.0.1",
-		"posthtml": "^0.11.4",
+		"parcel-bundler": "^1.12.4",
+		"postcss": "^7.0.30",
+		"postcss-custom-properties": "^9.1.1",
+		"postcss-flexbugs-fixes": "^4.2.1",
+		"postcss-font-family-system-ui": "^4.2.0",
+		"postcss-pxtorem": "^5.1.1",
+		"posthtml": "^0.13.0",
 		"pug": "^2.0.4",
-		"yaspeller": "^6.0.0"
+		"yaspeller": "^7.0.0"
 	},
 	"browserslist": [
 		"defaults",
