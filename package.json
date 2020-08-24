@@ -1,6 +1,6 @@
 {
 	"name": "solovev.one",
-	"description": "My portfolio",
+	"private": true,
 	"scripts": {
 		"start": "parcel serve src/index.pug",
 		"start:pages": "parcel serve src/*.pug",
