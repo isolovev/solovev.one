@@ -4,7 +4,7 @@
 	"scripts": {
 		"start": "parcel serve src/index.pug",
 		"start:pages": "parcel serve src/*.pug",
-		"build": "NODE_ENV=production node ./build.js",
+		"build": "NODE_ENV=production node ./scripts/build.js",
 		"spell": "yaspeller src/data.json"
 	},
 	"devDependencies": {

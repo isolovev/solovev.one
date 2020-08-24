@@ -14,14 +14,14 @@ const MQPacker = require("css-mqpacker");
 const postcssCustomProperties = require("postcss-custom-properties");
 const PostCSS = require("postcss");
 
-const templatePath = path.join(__dirname, "src");
+const sourcePath = path.join(process.cwd(), "src");
 
 const shortCssClassName = generateCssClassName();
 
 const mainBundler = new Parcel(
 	[
-		path.join(templatePath, "index.pug"),
-		path.join(templatePath, "404.pug"),
+		path.join(sourcePath, "index.pug"),
+		path.join(sourcePath, "404.pug"),
 	],
 	{
 		sourceMaps: false,
@@ -30,7 +30,6 @@ const mainBundler = new Parcel(
 );
 
 async function build() {
-	// noinspection JSUnresolvedFunction
 	const bundlePages = await mainBundler.bundle();
 	const assets = findAssets(bundlePages);
 
