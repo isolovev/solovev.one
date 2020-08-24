@@ -1,4 +1,3 @@
-/*noinspection CssInvalidFunction*/
 :root {
 	--wrap-top: constant(safe-area-inset-top, 0px);
 	--wrap-top: env(safe-area-inset-top, 0px);
