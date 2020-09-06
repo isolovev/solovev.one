@@ -10,10 +10,7 @@
 
 .home__wrap {
   box-sizing: border-box;
-  padding-top: var(--wrap-top, 0);
-  padding-right: var(--wrap-right, 0);
-  padding-bottom: var(--wrap-bottom, 0);
-  padding-left: var(--wrap-left, 0);
+  padding: var(--wrap-top, 0) var(--wrap-right, 0) var(--wrap-bottom, 0) var(--wrap-left, 0);
 }
 
 .home__header {

@@ -24,7 +24,7 @@
     "yaspeller": "^7.0.0"
   },
   "browserslist": [
-    "defaults",
+    "> 3%",
     "not Explorer 11",
     "not ExplorerMobile 11",
     "not OperaMini all"

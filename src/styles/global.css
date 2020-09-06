@@ -14,13 +14,9 @@
   --time-transition-projects: 0.5s;
 
   /* Paddings */
-  --wrap-top: constant(safe-area-inset-top, 0);
   --wrap-top: env(safe-area-inset-top, 0);
-  --wrap-right: constant(safe-area-inset-right, 0);
   --wrap-right: env(safe-area-inset-right, 0);
-  --wrap-bottom: constant(safe-area-inset-bottom, 0);
   --wrap-bottom: env(safe-area-inset-bottom, 0);
-  --wrap-left: constant(safe-area-inset-left, 0);
   --wrap-left: env(safe-area-inset-left, 0);
 }
 
