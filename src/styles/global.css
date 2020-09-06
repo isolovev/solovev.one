@@ -1,4 +1,19 @@
 :root {
+  /* Colors */
+  --background-color: #fff;
+  --text-color: #222;
+  --brand-text-color: #fff;
+  --brand-color: #d82a4a;
+
+  /* Sizes */
+  --base-line-height: 26px;
+  --section-bottom-offset: calc(1 * var(--base-line-height));
+
+  /* Times */
+  --transition: 0.25s;
+  --time-transition-projects: 0.5s;
+
+  /* Paddings */
   --wrap-top: constant(safe-area-inset-top, 0);
   --wrap-top: env(safe-area-inset-top, 0);
   --wrap-right: constant(safe-area-inset-right, 0);
@@ -7,15 +22,6 @@
   --wrap-bottom: env(safe-area-inset-bottom, 0);
   --wrap-left: constant(safe-area-inset-left, 0);
   --wrap-left: env(safe-area-inset-left, 0);
-  --line-height: 1.625;
-  --base-line-height: 26px;
-  --section-bottom-offset: calc(1 * var(--base-line-height));
-  --text-color: #222;
-  --brand: #d82a4a;
-  --brand-for-dark: #ff3c60;
-  --project-border: #e8e8e8;
-  --transition: 0.25s;
-  --time-transition-projects: 0.5s;
 }
 
 html {
@@ -27,8 +33,9 @@ html {
   font-family: system-ui, sans-serif;
   font-size: 100%;
   font-weight: 400;
-  line-height: var(--line-height);
+  line-height: 1.625;
   color: var(--text-color);
+  background: var(--background-color);
   border: 0;
   text-size-adjust: 100%;
   -webkit-font-smoothing: antialiased;
@@ -50,7 +57,7 @@ img {
 }
 
 a {
-  color: var(--brand);
+  color: var(--brand-color);
   text-decoration: none;
   cursor: pointer;
   outline: none;
@@ -80,7 +87,7 @@ a:not([class])::before {
   display: block;
   pointer-events: none;
   content: '';
-  box-shadow: 0 0 2px 4px var(--brand);
+  box-shadow: 0 0 2px 4px var(--brand-color);
   opacity: 0;
   transition: var(--transition);
 }
@@ -104,20 +111,9 @@ svg {
 }
 
 @media (prefers-color-scheme: dark) {
-  html {
-    color: #fff;
-    background: var(--text-color);
-  }
-
-  a {
-    color: var(--brand-for-dark);
-  }
-
-  a:hover {
-    color: #fff;
-  }
-
-  a:not([class])::before {
-    color: var(--brand-for-dark);
+  :root {
+    --background-color: #222;
+    --text-color: #fff;
+    --brand-color: #ff3c60;
   }
 }

@@ -5,7 +5,7 @@
   padding-right: var(--wrap-right, 0);
   padding-bottom: var(--wrap-bottom, 0);
   padding-left: var(--wrap-left, 0);
-  background: #fff;
+  background: var(--background-color);
 }
 
 .error__wrap {

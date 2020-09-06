@@ -5,7 +5,7 @@
   min-height: 100vh;
   padding: 25px;
   margin: 0 auto;
-  background: #fff;
+  background: var(--background-color);
 }
 
 .home__wrap {
@@ -36,8 +36,8 @@
   padding: 5px 10px;
   margin: 0;
   font-weight: 400;
-  color: #fff;
-  background: var(--brand);
+  color: var(--brand-text-color);
+  background: var(--brand-color);
 }
 
 @media (max-width: 900px) {
@@ -59,15 +59,5 @@
 @media (max-width: 500px) {
   .home {
     padding: var(--base-line-height);
-  }
-}
-
-@media (prefers-color-scheme: dark) {
-  .home {
-    background: var(--text-color);
-  }
-
-  .home__specialty {
-    background: var(--brand-for-dark);
   }
 }
