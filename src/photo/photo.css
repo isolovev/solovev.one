@@ -1,12 +1,25 @@
 .photo {
+  position: relative;
   width: 250px;
   height: 250px;
   margin: 0 auto var(--base-line-height);
+}
+
+.photo::before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  content: '';
   background: var(--brand);
   border-radius: 40px 53% 40px 53% / 40% 53% 40% 53%;
+  /*border-radius: 50%;*/
+  animation: photo-wafer 15s infinite;
 }
 
 .photo__image {
+  position: relative;
   z-index: 1;
   display: block;
   width: 100%;
@@ -26,7 +39,17 @@
 }
 
 @media (prefers-color-scheme: dark) {
-  .photo {
+  .photo::before {
     background: var(--brand-for-dark);
+  }
+}
+
+@keyframes photo-wafer {
+  0%, 100% {
+    transform: skewX(0);
+  }
+
+  60% {
+    transform: skew(-35deg);
   }
 }
