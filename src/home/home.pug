@@ -5,17 +5,17 @@ include ../about/about
 include ../external-link/external-link
 
 mixin home()
-	main.home(itemscope itemtype="http://schema.org/Person")
-		.home__wrap
-			+photo
+  main.home(itemscope itemtype="http://schema.org/Person")
+    .home__wrap
+      +photo
 
-			.home__header
-				h1.home__title
-					span(itemprop="name")= name
-					=" "
-					span(itemprop="familyName")= last_name
-				h2.home__specialty(itemprop="jobTitle")= specialty
+      .home__header
+        h1.home__title
+          span(itemprop="name")= name
+          =" "
+          span(itemprop="familyName")= last_name
+        h2.home__specialty(itemprop="jobTitle")= specialty
 
-			+contacts
-			+activity
-			+about
+      +contacts
+      +activity
+      +about

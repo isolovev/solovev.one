@@ -1,73 +1,73 @@
 .home {
-	min-height: 100vh;
-	width: 100%;
-	max-width: 600px;
-	box-sizing: border-box;
-	background: #fff;
-	padding: 25px;
-	margin: 0 auto;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 600px;
+  min-height: 100vh;
+  padding: 25px;
+  margin: 0 auto;
+  background: #fff;
 }
 
-	.home__wrap {
-		padding-top: var(--wrap-top, 0px);
-		padding-right: var(--wrap-right, 0px);
-		padding-bottom: var(--wrap-bottom, 0px);
-		padding-left: var(--wrap-left, 0px);
-		box-sizing: border-box;
-	}
+.home__wrap {
+  box-sizing: border-box;
+  padding-top: var(--wrap-top, 0);
+  padding-right: var(--wrap-right, 0);
+  padding-bottom: var(--wrap-bottom, 0);
+  padding-left: var(--wrap-left, 0);
+}
 
-		.home__header {
-			text-align: center;
-			line-height: 1;
-			margin: 0 0 var(--section-bottom-offset);
-		}
+.home__header {
+  margin: 0 0 var(--section-bottom-offset);
+  line-height: 1;
+  text-align: center;
+}
 
-			.home__title {
-				margin: 0;
-				padding: 0;
-				font-size: 50px;
-				font-weight: 600;
-				line-height: 1;
-				opacity: 0.99;
-			}
+.home__title {
+  padding: 0;
+  margin: 0;
+  font-size: 50px;
+  font-weight: 600;
+  line-height: 1;
+  opacity: 0.99;
+}
 
-			.home__specialty {
-				margin: 0;
-				padding: 5px 10px;
-				font-weight: 400;
-				background: var(--brand);
-				color: #fff;
-				display: inline-block;
-			}
+.home__specialty {
+  display: inline-block;
+  padding: 5px 10px;
+  margin: 0;
+  font-weight: 400;
+  color: #fff;
+  background: var(--brand);
+}
 
 @media (max-width: 900px) {
-	.home {
-		max-width: 60%;
-	}
+  .home {
+    max-width: 60%;
+  }
 }
 
 @media (max-width: 750px) {
-	.home {
-		max-width: none;
-	}
+  .home {
+    max-width: none;
+  }
 
-		.home__title {
-			font-size: calc(35px + 2vw);
-		}
+  .home__title {
+    font-size: calc(35px + 2vw);
+  }
 }
 
 @media (max-width: 500px) {
-	.home {
-		padding: var(--base-line-height);
-	}
+  .home {
+    padding: var(--base-line-height);
+  }
 }
 
 @media (prefers-color-scheme: dark) {
-	.home {
-		background: var(--text-color);
-	}
+  .home {
+    background: var(--text-color);
+  }
 
-	.home__specialty {
-		background: var(--brand-for-dark);
-	}
+  .home__specialty {
+    background: var(--brand-for-dark);
+  }
 }

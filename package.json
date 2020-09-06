@@ -1,79 +1,79 @@
 {
-	"name": "solovev.one",
-	"private": true,
-	"scripts": {
-		"start": "parcel serve src/index.pug",
-		"start:pages": "parcel serve src/*.pug",
-		"build": "NODE_ENV=production node ./scripts/build.js",
-		"lint:styles": "stylelint src/**/*.css",
-		"spell": "yaspeller src/data.json"
-	},
-	"devDependencies": {
-		"autoprefixer": "^9.8.6",
-		"css-mqpacker": "^7.0.0",
-		"parcel-bundler": "^1.12.4",
-		"postcss": "^7.0.32",
-		"postcss-custom-properties": "^9.1.1",
-		"postcss-flexbugs-fixes": "^4.2.1",
-		"postcss-font-family-system-ui": "^4.3.0",
-		"postcss-pxtorem": "^5.1.1",
-		"posthtml": "^0.13.3",
-		"pug": "^3.0.0",
-		"stylelint": "^13.7.0",
-		"stylelint-config-recess-order": "^2.1.0",
-		"stylelint-config-standard": "^20.0.0",
-		"yaspeller": "^7.0.0"
-	},
-	"browserslist": [
-		"defaults",
-		"not Explorer 11",
-		"not ExplorerMobile 11",
-		"not OperaMini all"
-	],
-	"postcss": {
-		"plugins": {
-			"postcss-pxtorem": {
-				"rootValue": 16,
-				"mediaQuery": true,
-				"propList": [
-					"font",
-					"font-size",
-					"line-height",
-					"letter-spacing",
-					"margin",
-					"padding"
-				]
-			},
-			"postcss-flexbugs-fixes": {},
-			"postcss-font-family-system-ui": {},
-			"autoprefixer": {}
-		}
-	},
-	"yaspeller": {
-		"ignoreCapitalization": true,
-		"dictionary": [
-			"опенсорс",
-			"frontend",
-			"фронтенд",
-			"GitHub",
-			"github",
-			"solovev",
-			"gosolivs",
-			"sameAs",
-			"mailto",
-			"Evr",
-			"ne",
-			"evrone",
-			"фрилансером"
-		]
-	},
-	"stylelint": {
-		"extends": [
-			"stylelint-config-standard",
-			"stylelint-config-recess-order"
-		],
-		"rules": {
-			"block-no-empty": null
-		}
-	}
+  "name": "solovev.one",
+  "private": true,
+  "scripts": {
+    "start": "parcel serve src/index.pug",
+    "start:pages": "parcel serve src/*.pug",
+    "build": "NODE_ENV=production node ./scripts/build.js",
+    "lint:styles": "stylelint src/**/*.css",
+    "spell": "yaspeller src/data.json"
+  },
+  "devDependencies": {
+    "autoprefixer": "^9.8.6",
+    "css-mqpacker": "^7.0.0",
+    "parcel-bundler": "^1.12.4",
+    "postcss": "^7.0.32",
+    "postcss-custom-properties": "^9.1.1",
+    "postcss-flexbugs-fixes": "^4.2.1",
+    "postcss-font-family-system-ui": "^4.3.0",
+    "postcss-pxtorem": "^5.1.1",
+    "posthtml": "^0.13.3",
+    "pug": "^3.0.0",
+    "stylelint": "^13.7.0",
+    "stylelint-config-recess-order": "^2.1.0",
+    "stylelint-config-standard": "^20.0.0",
+    "yaspeller": "^7.0.0"
+  },
+  "browserslist": [
+    "defaults",
+    "not Explorer 11",
+    "not ExplorerMobile 11",
+    "not OperaMini all"
+  ],
+  "postcss": {
+    "plugins": {
+      "postcss-pxtorem": {
+        "rootValue": 16,
+        "mediaQuery": true,
+        "propList": [
+          "font",
+          "font-size",
+          "line-height",
+          "letter-spacing",
+          "margin",
+          "padding"
+        ]
+      },
+      "postcss-flexbugs-fixes": {},
+      "postcss-font-family-system-ui": {},
+      "autoprefixer": {}
+    }
+  },
+  "yaspeller": {
+    "ignoreCapitalization": true,
+    "dictionary": [
+      "опенсорс",
+      "frontend",
+      "фронтенд",
+      "GitHub",
+      "github",
+      "solovev",
+      "gosolivs",
+      "sameAs",
+      "mailto",
+      "Evr",
+      "ne",
+      "evrone",
+      "фрилансером"
+    ]
+  },
+  "stylelint": {
+    "extends": [
+      "stylelint-config-standard",
+      "stylelint-config-recess-order"
+    ],
+    "rules": {
+      "block-no-empty": null
+    }
+  }
 }

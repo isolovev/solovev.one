@@ -1,8 +1,8 @@
 .about {}
 
-	.about__text {}
+.about__text {}
 
-		.about__text p {
-			padding: 0;
-			margin: 0 0 0.5em;
-		}
+.about__text p {
+  padding: 0;
+  margin: 0 0 0.5em;
+}
