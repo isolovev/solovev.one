@@ -11,7 +11,6 @@ const Parcel = require("parcel-bundler");
 
 const PostHTML = require("posthtml");
 const MQPacker = require("css-mqpacker");
-const postcssCustomProperties = require("postcss-custom-properties");
 const PostCSS = require("postcss");
 
 const sourcePath = path.join(process.cwd(), "src");
@@ -54,7 +53,6 @@ async function build() {
     const cssData = (await readFile(cssFile.name)).toString();
 
     const styles = await PostCSS([
-      postcssCustomProperties({preserve: false}),
       cssPlugin,
       MQPacker
     ])
