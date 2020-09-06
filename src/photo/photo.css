@@ -3,6 +3,7 @@
   width: 250px;
   height: 250px;
   margin: 0 auto var(--base-line-height);
+  overflow: hidden;
 }
 
 .photo::before {
@@ -13,7 +14,8 @@
   left: 0;
   content: '';
   background: var(--brand-color);
-  border-radius: 40px 53% 40px 53% / 40% 53% 40% 53%;
+  border-radius: 50%;
+  transform: skew(35deg);
   animation: photo-wafer 15s infinite;
 }
 
@@ -40,7 +42,7 @@
 @keyframes photo-wafer {
   0%,
   100% {
-    transform: skewX(0);
+    transform: skew(35deg);
   }
 
   60% {
