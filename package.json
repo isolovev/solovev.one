@@ -17,6 +17,7 @@
     "postcss-font-family-system-ui": "^4.3.0",
     "postcss-pxtorem": "^5.1.1",
     "posthtml": "^0.13.3",
+    "posthtml-minify-classnames": "^0.2.3",
     "pug": "^3.0.0",
     "stylelint": "^13.7.2",
     "stylelint-config-recess-order": "^2.1.0",
