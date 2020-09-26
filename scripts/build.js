@@ -11,8 +11,10 @@ const Parcel = require("parcel-bundler");
 
 const PostHTML = require("posthtml");
 const PostHTMLMinifyCSS = require("posthtml-minify-classnames");
-const MQPacker = require("css-mqpacker");
+const HTMLNano = require("htmlnano");
+
 const PostCSS = require("postcss");
+const MQPacker = require("css-mqpacker");
 
 const sourcePath = path.join(process.cwd(), "src");
 
@@ -30,7 +32,10 @@ async function build() {
   const cssFiles = assets.filter((item) => item.type === "css");
 
   for (const cssFile of cssFiles) {
-    const cssData = (await readFile(cssFile.name)).toString();
+    /**
+     * @type {Buffer}
+     */
+    const cssData = await readFile(cssFile.name);
 
     /**
      * @type {postcss.Result}
@@ -46,15 +51,23 @@ async function build() {
   }
 
   for (const item of assets.filter((i) => i.type === "html")) {
-    const html = await readFile(item.name);
+    /**
+     * @type {string}
+     */
+    const html = await readFile(item.name).then((i) => i.toString());
 
-    await writeFile(
-      item.name,
-      PostHTML()
-        .use(htmlPlugin(cssFiles))
-        .use(PostHTMLMinifyCSS())
-        .process(html, { sync: true }).html
-    );
+    /**
+     * @type {PostHTML.Result<unknown>}
+     */
+    const result = await PostHTML()
+      .use(inlineStylesPlugin(cssFiles))
+      .use(PostHTMLMinifyCSS())
+      .use(HTMLNano({ removeUnusedCss: {} }))
+      .process(html);
+
+    console.log(result.html);
+
+    await writeFile(item.name, result.html);
   }
 
   await copyFile("./src/icons/favicon.ico", "./dist/favicon.ico");
@@ -85,7 +98,7 @@ function findAssets(bundle) {
   );
 }
 
-function htmlPlugin(cssFiles) {
+function inlineStylesPlugin(cssFiles) {
   return (tree) => {
     tree.match({ tag: "link", attrs: { rel: "stylesheet" } }, (link) => {
       const cssFile = cssFiles.find(
