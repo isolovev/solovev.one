@@ -1,11 +1,5 @@
 const path = require("path");
-const fs = require("fs");
-const { promisify } = require("util");
-
-const readFile = promisify(fs.readFile);
-const writeFile = promisify(fs.writeFile);
-const copyFile = promisify(fs.copyFile);
-const unlink = promisify(fs.unlink);
+const { readFile, writeFile, copyFile, unlink } = require("fs").promises;
 
 const Parcel = require("parcel-bundler");
 
@@ -64,8 +58,6 @@ async function build() {
       .use(PostHTMLMinifyCSS())
       .use(HTMLNano({ removeUnusedCss: {} }))
       .process(html);
-
-    console.log(result.html);
 
     await writeFile(item.name, result.html);
   }
