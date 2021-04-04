@@ -9,15 +9,13 @@
     "spell": "yaspeller src/data.json"
   },
   "devDependencies": {
-    "autoprefixer": "^10.2.5",
+    "autoprefixer": "^9.8.6",
     "css-mqpacker": "^7.0.0",
     "htmlnano": "^0.2.8",
     "parcel-bundler": "^1.12.4",
-    "postcss": "^8.2.9",
-    "postcss-flexbugs-fixes": "^5.0.2",
-    "postcss-font-family-system-ui": "^5.0.0",
-    "postcss-pxtorem": "^6.0.0",
-    "posthtml": "^0.15.1",
+    "postcss": "^7.0.35",
+    "postcss-pxtorem": "^5.1.1",
+    "posthtml": "^0.12.3",
     "posthtml-minify-classnames": "^0.2.3",
     "pug": "^3.0.2",
     "stylelint": "^13.12.0",
@@ -45,8 +43,6 @@
           "padding"
         ]
       },
-      "postcss-flexbugs-fixes": {},
-      "postcss-font-family-system-ui": {},
       "autoprefixer": {}
     }
   },
