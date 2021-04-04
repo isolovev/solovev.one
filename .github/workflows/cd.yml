@@ -11,10 +11,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: yarn install
+      - run: npm ci
       - name: Build
         run: |
-          yarn run build
+          npm run build
           cp -r static dist/static
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
